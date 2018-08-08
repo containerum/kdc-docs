@@ -1,0 +1,159 @@
+#sidebar {
+  width: 300px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 999;
+  background: $green_dark;
+  transition: all 0.3s;
+  color: #fff;
+
+  @include media-breakpoint-down(md) {
+    // width: 90vw;
+    width: 0px;
+    max-width: 480px;
+
+    .header {
+      display: none;
+    }
+  }
+
+  &.show {
+    width: 90vw;
+
+    .header {
+      display: block;
+    }
+  }
+
+  .header {
+    height: 120px;
+    text-align: center;
+    padding-top: 27px;
+
+    img {
+      width: 73%;
+    }
+
+    i {
+      display: none;
+    }
+
+    @include media-breakpoint-down(md) {
+      height: auto;
+      width: 100%;
+      padding-bottom: 35px;
+      padding-left: 45px;
+      text-align: left;
+
+      img {
+        width: 55vw;
+      }
+
+      i {
+        position: absolute;
+        display: block;
+        top: 15px;
+        right: 20px;
+        font-size: 32px;
+      }
+    }
+  }
+
+  .footer {
+    flex: 0 0 auto;
+    height: 120px;
+    padding-top: 25px;
+    text-align: center;
+
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+
+    a {
+      box-sizing: border-box;
+      color: #fff;
+      border: 1px solid #fff;
+      border-radius: 4px;
+      line-height: 18px;
+      padding: 14px 24px;
+      font-size: 18px;
+    }
+  }
+
+  li {
+    list-style: none;
+
+    span:hover {
+      cursor: pointer;
+    }
+  }
+
+  a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .components {
+    // flex: 1 0 auto;
+    // margin-top: 50px;
+    height: calc(100% - 120px - 120px);
+    font-size: 18px;
+    line-height: 30px;
+    overflow-y: auto;
+    margin-bottom: 30px;
+
+    @include media-breakpoint-down(md) {
+      height: 100%;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+
+      &.parent {
+        padding: 0 40px 0;
+      }
+    }
+
+    .sub, .sub-sub {
+      padding-left: 20px;
+      font-size: 16px;
+      line-height: 24px;
+      display: none;
+
+      &.active {
+        display: block;
+      }
+
+      a.active {
+        color: #8989a7;
+      }
+    }
+
+    .break {
+      width: 200px;
+      border: 1px solid #8989a7;
+      margin: 30px 0px;
+    }
+  }
+}
+
+#sidebar-show {
+  display: none;
+  font-size: 26px;
+  padding-top: 18px;
+  padding-left: 35px;
+
+  @include media-breakpoint-down(md) {
+    display: block;
+  }
+}
+
+#sidebar-show, #sidebar-close {
+  &:hover {
+    cursor: pointer;
+  }
+}

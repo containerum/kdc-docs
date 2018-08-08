@@ -1,0 +1,17 @@
+{{ $page := .page }}
+{{ $path := .page.File.Path }}
+
+<div class="container">
+  {{ .page.Content  }}
+
+  <div class="contribute">
+    <a href="{{ .page.Site.Params.github }}/issues/new?title={{ .page.Site.Params.issue }} {{ $path }}" class="button small primary expand">
+      <i class="fas fa-plus-square"></i> Create Issue
+    </a>
+    {{ with .page.Site.GetPage "page" "contribute/docs.md" }}
+      <a href="{{ .URL }}#{{ $path }}" class="button small primary expand">
+        <i class="fas fa-pencil-alt"></i> Edit Page
+      </a>
+    {{ end }}
+  </div>
+</div>

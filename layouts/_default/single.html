@@ -1,0 +1,7 @@
+{{ define "main" }}
+  {{ $page := . }}
+
+  <div class="overview">
+    {{ partial "page.html" (dict "context" . "page" $page) }}
+  </div>
+{{ end }}

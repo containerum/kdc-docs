@@ -1,0 +1,42 @@
+sudo: required
+
+env:
+  global:
+  - CHKIT_VERSION=v3.4.0-alpha
+  - IMAGE_NAME=containerum/cdk-docs
+  - DEPLOY=cdk-documentation
+  - NAMESPACE=cdk
+  - CONTAINER=docs
+
+services:
+  - docker
+
+install:
+  - wget https://github.com/containerum/chkit/releases/download/${CHKIT_VERSION}/chkit_linux_amd64_${CHKIT_VERSION}.tar.gz
+  - tar -zxf chkit_linux_amd64_${CHKIT_VERSION}.tar.gz && sudo mv chkit /bin/chkit
+
+script:
+  - chkit get api
+  - chkit login -u ${LOGIN} -p ${PASSWORD} -n -
+  - docker build -t "$IMAGE_NAME" --build-arg DOCS_COMMIT="${TRAVIS_COMMIT::8}" .
+  - echo "Commit ${TRAVIS_COMMIT::8}"
+
+before_deploy:
+  - docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD"
+  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:latest"
+  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:release"
+  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:dev"
+  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${TRAVIS_COMMIT::8}"
+  - if [ "$TRAVIS_TAG" ]; then docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${TRAVIS_TAG}"; fi
+
+deploy:
+  - provider: script
+    script: docker push "${IMAGE_NAME}:release" && docker push "${IMAGE_NAME}:${TRAVIS_COMMIT::8}"
+    skip_cleanup: true
+    on:
+      branch: master
+  - provider: script
+    script: chkit set default-namespace -n ${NAMESPACE} && chkit set image --deployment ${DEPLOY} --container ${CONTAINER} --image "${IMAGE_NAME}:${TRAVIS_COMMIT::8}" --force
+    skip_cleanup: true
+    on:
+      branch: master

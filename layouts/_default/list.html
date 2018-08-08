@@ -1,0 +1,12 @@
+{{ define "main" }}
+  {{ $page := . }}
+  {{ $section_to_display := .Pages}}
+
+  <div class="overview">
+    {{ partial "page.html" (dict "context" . "page" $page ) }}
+  </div>
+
+  <div class="list">
+    {{ partial "list.html" (dict "context" . "section_to_display" $section_to_display ) }}
+  </div>
+{{ end }}

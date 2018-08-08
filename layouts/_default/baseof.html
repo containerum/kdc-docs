@@ -1,0 +1,15 @@
+{{ partial "header.html" . }}
+
+  {{ partial "sidebar.html" . }}
+
+  <i id="sidebar-show" class="fas fa-bars"></i>
+
+  <div id="content">
+
+    {{ block "main" . }}{{ end }}
+
+    {{ partial "footer.html" . }}
+
+  </div>
+
+  <div class="alert" id="alert" />

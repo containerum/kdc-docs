@@ -1,0 +1,26 @@
+{{ define "main" }}
+  {{ $section_to_display := (.Site.Taxonomies.categories.top).Pages | lang.Merge (.Sites.First.Taxonomies.categories.top).Pages }}
+
+  <div class="home">
+    <h1>Containerum</h1>
+    <h2>Container management platform with built-in revision control, teamwork and CI/CD pipelines</h2>
+    <div class="break"></div>
+    <div class="popular container-fluid">
+      <h3 class="popular-title">Most common and helpful pages</h3>
+      <div class="row">
+        {{ range $section_to_display.ByWeight }}
+          <div class="col-lg-4">
+            <div class="item">
+              <h4>{{ .Name }}</h4>
+              <p>{{ .Description | truncate 150 }}</p>
+              <div class="read-more">
+                <a href="{{ .Permalink }}">Read More</a>
+              </div>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+
+{{ end }}

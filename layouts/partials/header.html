@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#0875cf">
+    <meta name="description" content="{{ .Description }}">
+    <title>{{ .Title }}</title>
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
+    <link href="{{"css/main.css" | relURL}}?{{ now.Unix }}" rel="stylesheet">
+    <script src="{{"js/main.js" | relURL}}?{{ now.Unix }}" charset="utf-8"></script>
+    {{ partial "scripts" .}}
+  </head>
+  <body class="{{ .Site.Params.theme }}">
+    <nav id="header" class="d-none d-lg-block">
+      <a href="https://containerum.com" class="button small primary expand email-support">
+        <i class="fas fa-home"></i> Home
+      </a>
+      <a href="https://github.com/containerum" class="button small primary expand email-support">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <a href="#" class="button small primary expand email-support">
+        <i class="fab fa-twitter"></i> Twitter
+      </a>
+    </nav>

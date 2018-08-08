@@ -1,0 +1,17 @@
+{{ $section_to_display := .section_to_display }}
+
+<div class="container-fluid">
+  <div class="row">
+    {{ range $section_to_display.ByWeight }}
+      <div class="col-lg-4">
+        <div class="item">
+          <h4>{{ .Name }}</h4>
+          <p>{{ .Description | truncate 150 }}</p>
+          <div class="read-more">
+            <a href="{{ .Permalink }}">Read More</a>
+          </div>
+        </div>
+      </div>
+    {{ end }}
+  </div>
+</div>

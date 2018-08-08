@@ -1,0 +1,61 @@
+{{ $currentPage := .Page }}
+
+<nav id="sidebar">
+  <div class="header">
+    <a href="/">
+      <img src="/img/logo.svg">
+    </a>
+    <i id="sidebar-close" class="fas fa-times"></i>
+  </div>
+  <div class="components">
+    <ul class="parent">
+      {{ range .Site.Menus.docs.ByWeight }}
+        {{ if eq .Weight 7 }}
+          <li class="break"></li>
+        {{ end }}
+        <li>
+          <span class="activator">{{ .Name }}</span>
+          {{ if .HasChildren }}
+            {{ $.Scratch.Set "class" "none" }}
+            {{ if eq $currentPage.Params.Menu.Docs.Parent .Identifier }} {{ $.Scratch.Set "class" "active" }} {{ end }}
+            {{ $id := .Identifier }}
+            {{ with $currentPage.Parent }}
+              {{ if eq .Params.Menu.Docs.Parent $id }} {{ $.Scratch.Set "class" "active" }} {{ end }}
+              {{ with .Parent }}
+                {{ if eq .Params.Menu.Docs.Parent $id }} {{ $.Scratch.Set "class" "active" }} {{ end }}
+              {{ end }}
+            {{ end }}
+
+            <ul class="sub {{ $.Scratch.Get "class" }} {{ $.Scratch.Get "class" }}">
+              {{ range .Children.ByWeight }}
+                <li>
+                  {{ if .HasChildren }}
+                    <span class="sub-activator">{{ .Name }}</span>
+                    {{ $page := . }}
+                    {{ $.Scratch.Set "sub-class" "none" }}
+                    {{ if eq $currentPage.Params.Menu.Docs.Parent .Identifier }} {{ $.Scratch.Set "sub-class" "active" }} {{ end }}
+
+                    <ul class="sub-sub {{ $.Scratch.Get "sub-class" }}">
+                      {{ range .Children.ByWeight }}
+                        <li class="{{ if eq .Page.Parent $currentPage.Parent }}active{{ end }}">
+                          <a href="{{ .URL }}" class="{{ if eq $currentPage .Page }}active{{ end }}">{{ .Name }}</a>
+                        </li>
+                      {{ end }}
+                    </ul>
+                  {{ else }}
+                    <a href="{{ .URL }}" class="{{ if eq $currentPage .Page }}active{{ end }}">{{ .Name }}</a>
+                  {{ end }}
+                </li>
+              {{ end }}
+            </ul>
+          {{ end }}
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+  <div class="footer">
+    <a href="https://github.com/containerum/containerum-docs" class="button small primary expand email-support">
+      <i class="fab fa-github"></i> Contribute to Docs
+    </a>
+  </div>
+</nav>

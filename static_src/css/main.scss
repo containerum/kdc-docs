@@ -1,0 +1,21 @@
+@import "../../node_modules/normalize.css/normalize.css";
+
+@import "../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700,900,300italic,400italic&subset=cyrillic,latin');
+
+$blue_: #0875cf !important;
+$grey_: #333a4c !important;
+$green_: #009688 !important;
+$purple: #0B0746 !important;
+$purple_black: #050326 !default;
+$yellow: #f6bc00 !important;
+$black_: #142831 !default;
+$green_dark: #084c61 !important;
+
+@import "header.scss";
+@import "sidebar.scss";
+@import "content.scss";
+@import "footer.scss";
+@import "alert.scss";

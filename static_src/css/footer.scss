@@ -1,0 +1,20 @@
+#footer {
+  text-align: center;
+  margin-top: 7vh;
+
+  span {
+    &.label {
+      // font-size: 18px;
+      font-weight: bold;
+    }
+
+    &.italic {
+      font-style: italic;
+    }
+  }
+
+  .version {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+}
