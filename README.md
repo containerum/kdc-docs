@@ -1,9 +1,9 @@
 # Documentation for Containerum project
 
-[![Build Status](https://travis-ci.org/containerum/containerum-docs.svg?branch=master)](https://travis-ci.org/containerum/containerum-docs)
+[![Build Status](https://travis-ci.org/containerum/cdk-docs.svg?branch=master)](https://travis-ci.org/containerum/cdk-docs)
 
-[Stable documentation](https://docs.containerum.com)  
-[Staging documentation](http://docs-stage.hub.containerum.io)
+[Stable documentation](https://docs.cdk.containerum.com)  
+[Staging documentation](https://cdk-docs.hub.containerum.io)
 
 Containerum docs is a documentaion project for [Containerum Platform](https://github.com/containerum/containerum). It contains  guides on installing Kubernetes and Containerum, developer guides, CI/CD instructions, etc.
 Containerum Docs can be launched locally with YARN and Hugo. We strive to make docs as clear and substantial as possible, so we welcome contributions and advice.
