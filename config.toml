@@ -5,7 +5,7 @@ pygmentsUseClassic = true
 pygmentsStyle = "monokai"
 
 [params]
-  github = "https://github.com/containerum/containerum-docs"
+  github = "https://github.com/containerum/cdk-docs"
   issue = "Issue with"
 
 
