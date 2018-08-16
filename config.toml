@@ -5,7 +5,7 @@ pygmentsUseClassic = true
 pygmentsStyle = "monokai"
 
 [params]
-  github = "https://github.com/containerum/containerum-docs"
+  github = "https://github.com/containerum/cdk-docs"
   issue = "Issue with"
 
 
@@ -16,82 +16,38 @@ pygmentsStyle = "monokai"
   url = "/about/"
 
 [[menu.docs]]
-  name = "Getting Started"
+  name = "Installation"
   weight = 2
-  identifier = "getting-started"
-  url = "/getting-started/"
+  identifier = "kube-installation"
+  url = "/installation/"
 
 [[menu.docs]]
-  name = "Containerum"
+  name = "Plugins"
   weight = 3
-  identifier = "platform"
-  url = "/platform/"
-
-[[menu.docs]]
-  name = "Web Panel"
-  weight = 4
-  identifier = "web-panel"
-  url = "/web-panel/"
-
-[[menu.docs]]
-  name = "Kubernetes"
-  weight = 5
-  identifier = "kubernetes"
-  url = "/kubernetes/"
-
-[[menu.docs]]
-  name = "CLI"
-  weight = 6
-  identifier = "cli"
-  url = "/cli/"
-
-[[menu.docs]]
-  name = "CI/CD"
-  weight = 7
-  identifier = "ci-cd"
-  url = "/ci-cd/"
-
-[[menu.docs]]
-  name = "FAQ"
-  weight = 8
-  identifier = "faq"
-  url = "/faq/"
-
-[[menu.docs]]
-  name = "Developer Guide - API"
-  weight = 9
-  identifier = "developer-guide"
-  url = "/developer-guide/"
+  identifier = "plugins"
+  url = "/plugins/"
 
 [[menu.docs]]
   name = "Release Notes"
-  weight = 10
+  weight = 4
   identifier = "release-notes"
   url = "/release-notes/"
 
 [[menu.docs]]
+  name = "FAQ"
+  weight = 5
+  identifier = "faq"
+  url = "/faq/"
+
+[[menu.docs]]
   name = "Contribute"
-  weight = 11
+  weight = 6
   identifier = "contribute"
   url = "/contribute/"
 
 [[menu.docs]]
-  name = "Commands"
-  weight = 12
-  identifier = "commands"
-  parent = "cli"
-  url = "/cli/commands"
-
-[[menu.docs]]
-  name = "Components"
-  weight = 13
-  identifier = "components"
-  parent = "platform"
-  url = "/platform/components/"
-
-[[menu.docs]]
   name = "Installation"
-  weight = 14
+  weight = 7
   identifier = "installation"
-  parent = "kubernetes"
-  url = "/kubernetes/installation/"
+  parent = "kube-installation"
+  url = "/installation/installation/"

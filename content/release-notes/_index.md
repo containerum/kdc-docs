@@ -17,4 +17,4 @@ draft: false
 
 # Release Notes Overview
 
-This section contains release notes for chkit CLI, Containerum Kubernetes Engine, Containerum Online and Containerum self-hosted.
+This section contains release notes for Containerum Distribution of Kubernetes (CDK).

@@ -18,5 +18,5 @@ draft: false
 
 # Contributions Overview
 We welcome any help from the open source community.
-You can help us develop our open source Containerum or Docs by submitting issues or contributing code to GitHub.
+You can help us develop the Docs by submitting issues or contributing to GitHub.
 Please feel free to contact us with any ideas or suggestions at mark@containerum.io.
