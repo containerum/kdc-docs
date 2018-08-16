@@ -8,7 +8,7 @@ keywords: []
 
 menu:
   docs:
-    parent: "kubernetes"
+    parent: "kube-installation"
     weight: 3
 
 draft: true

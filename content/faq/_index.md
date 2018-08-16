@@ -16,7 +16,7 @@ draft: false
 
 # Frequently Asked Questions
 
-##### **Q:** What is Containerum?
+##### **Q:** What is Containerum Distribution of Kubernetes?
 
 **A:** Containerum is a Platform for application delivery and management in Kubernetes clusters. It allows automating CI/CD operations for small, medium and large-scale projects via Web UI and CLI.
 
