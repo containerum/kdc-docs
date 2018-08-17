@@ -1,9 +1,9 @@
 ---
 title: FAQ
 linktitle: FAQ
-description:
+description: Frequently Asked Questions
 
-categories: []
+categories: [top]
 keywords: []
 
 menu:
@@ -17,47 +17,17 @@ draft: false
 # Frequently Asked Questions
 
 ##### **Q:** What is Containerum Distribution of Kubernetes?
+Containerum Distribution of Kubernetes (CDK) is a production-ready upstream Kubernetes distro that has been tested by Containerum engineers. It is guaranteed to be compatible with any applications and to run on any cloud or on-premise. Containerum watches for changes in the official Kubernetes distribution and runs a series of tests for each release to deliver production-ready CDK as fast as possible.
 
-**A:** Containerum is a Platform for application delivery and management in Kubernetes clusters. It allows automating CI/CD operations for small, medium and large-scale projects via Web UI and CLI.
+##### **Q:** Is it free?
+Sure, you can install and use CDK for free.
 
-</br>
+##### **Q:** What plugins should I use?
+Containerum Distribution of Kubernetes is compatible with all Kubernetes plugins. However, we recommend using the plugins listed in the [plugins](/plugins/) section as they have been tested for stability and reliability.
 
-##### **Q:** How is Containerum different from other Kubernetes platforms?
+##### **Q:** CDK is available as binaries and Docker images. Which one should I install?
+Launching CDK from binaries ensures that Kubernetes is independent from your container runtime. However, it is perfectly fine to launch CDK from Docker images as you would do with the standard Kubernetes distribution.
 
-**A:** Containerum allows building automated pipelines for projects within the cluster so that you can deliver easier and faster. Additionally, you can track revision history and rollback to any previous configuration in a matter of clicks. Containerum extends user and role management of Kubernetes for better security and teamwork capabilities.
+##### **Q:** Can I get support?
 
-</br>
-
-##### **Q:** How can I build my Kubernetes cluster with Containerum?
-
-**A:** First, you should have nodes (or VMs) with CentOS and [Docker](/kubernetes/prerequisites). Second, install [Kubernetes](/kubernetes/). Finally, [install Containerum](/platform/installation). That's it!
-
-</br>
-
-##### **Q:** Should I use CLI or Web Panel to work with Containerum?
-
-**A:** There are two ways to interact with Containerum: chkit CLI and Web Panel. Both tools offer the same level of performance. Which one to choose depends on your preferred way of working with applications.
-
-</br>
-
-##### **Q:** Where can I get the source code for Containerum?
-
-**A:** The source code for each Containerum component is available as a separate repository on [GitHub](github.com/containerum/). You can view the list of components and Containerum architecture on the [GitHub project page](github.com/containerum/containerum).
-
-</br>
-
-##### **Q:** How much does Containerum cost?
-
-**A:** Containerum is open source software that comes free of charge. You can use, share and/or modify Containerum components as you like and contribute to the project on [GitHub](GitHub.com/containerum/containerum).
-
-</br>
-
-##### **Q:** Something doesn't seem to work right. Can you help me?
-
-**A:** Yes. Please, create an issue on [GitHub](GitHub.com/containerum/containerum) and we will look in the matter asap.
-
-</br>
-
-##### **Q:** Can I get more support?
-
-**A:** Sure, Containerum offers additional support and maintenance of your cluster. Prices are available [here](https://containerum.com/consulting/).
+**A:** Sure, Containerum Distribution of Kubernetes comes with support and maintenance plans. Prices are available [here](https://containerum.com/kubernetes/). You can [contact](https://containerum.com/sales/) Containerum for more information.

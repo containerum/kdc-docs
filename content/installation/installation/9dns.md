@@ -23,7 +23,7 @@ Configure DNS Cluster to enable service discovery to applications running inside
 Launch `kube-dns`:
 
 ```bash
-kubectl create -f https://raw.githubusercontent.com/containerum/containerum-docs/develop/content/files/kube-dns.yaml
+kubectl create -f https://raw.githubusercontent.com/containerum/cdk-docs/master/content/files/kube-dns.yaml
 ```  
 Output:
 

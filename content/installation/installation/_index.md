@@ -1,9 +1,9 @@
 ---
-title: Kubernetes Components Installation - Containerum
+title: CDK Installation
 linktitle: Intro
 description: Bootstrapping Kubernetes components from binaries.
 
-categories: []
+categories: [top]
 keywords: []
 
 menu:
