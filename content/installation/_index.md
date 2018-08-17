@@ -15,7 +15,7 @@ menu:
 draft: false
 ---
 
-# Containerum Kubernetes Package
+# Containerum Distribution of Kubernetes
 This section describes how to bootstrap a high availability cluster with Containerum Kubernetes Package.
 Containerum Kubernetes Package is a production-grade upstream Kubernetes distribution. It has been tested and is guaranteed to work on any infrastructure. Our Kubernetes package relies on containerd runtime. Containerd installation is also covered in this guide.
 
