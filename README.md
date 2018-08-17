@@ -1,4 +1,4 @@
-# Documentation for Containerum project
+# Documentation for Containerum Distribution of Kubernetes
 
 [![Build Status](https://travis-ci.org/containerum/cdk-docs.svg?branch=master)](https://travis-ci.org/containerum/cdk-docs)
 
