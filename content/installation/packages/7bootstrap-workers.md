@@ -8,7 +8,7 @@ keywords: []
 
 menu:
   docs:
-    parent: "installation"
+    parent: "packages"
     weight: 8
 
 draft: false
@@ -276,4 +276,4 @@ worker-2   Ready     <none>    20s       v1.10.2
 
 Done!
 
-Now you can proceed to [configuring Flannel](/kubernetes/installation/8flannel).
+Now you can proceed to [configuring Flannel](/installation/packages/8flannel).

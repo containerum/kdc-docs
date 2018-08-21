@@ -8,7 +8,7 @@ keywords: []
 
 menu:
   docs:
-    parent: "installation"
+    parent: "packages"
     weight: 10
 
 draft: false
@@ -23,7 +23,7 @@ Configure DNS Cluster to enable service discovery to applications running inside
 Launch `kube-dns`:
 
 ```bash
-kubectl create -f https://raw.githubusercontent.com/containerum/containerum-docs/develop/content/files/kube-dns.yaml
+kubectl create -f https://raw.githubusercontent.com/containerum/cdk-docs/master/content/files/kube-dns.yaml
 ```  
 Output:
 
@@ -88,4 +88,4 @@ Address 1: 10.96.0.1 kubernetes.default.svc.cluster.local
 
 Congratulations! You've just bootstrapped your Kubernetes cluster.
 
-Now it's time to [run tests](/kubernetes/installation/10smoketest) to make sure the cluster is up and running.
+Now it's time to [run tests](/installation/packages/10smoketest) to make sure the cluster is up and running.

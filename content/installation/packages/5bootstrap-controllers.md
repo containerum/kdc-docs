@@ -8,7 +8,7 @@ keywords: []
 
 menu:
   docs:
-    parent: "installation"
+    parent: "packages"
     weight: 6
 
 draft: false
@@ -250,4 +250,4 @@ Output:
 
 Done!
 
-Now you can proceed to [configuring kubectl](/kubernetes/installation/6configure-kubectl).
+Now you can proceed to [configuring kubectl](/installation/packages/6configure-kubectl).

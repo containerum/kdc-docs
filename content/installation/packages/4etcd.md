@@ -8,7 +8,7 @@ keywords: []
 
 menu:
   docs:
-    parent: "installation"
+    parent: "packages"
     weight: 5
 
 draft: false
@@ -125,4 +125,4 @@ f6fc911b19984e4c, started, master-1, https://172.16.150.1:2380, https://172.16.1
 
 Done!
 
-Now you can proceed to [bootstrapping Kubernetes controllers](/kubernetes/installation/5bootstrap-controllers).
+Now you can proceed to [bootstrapping Kubernetes controllers](/installation/packages/5bootstrap-controllers).

@@ -8,7 +8,7 @@ keywords: []
 
 menu:
   docs:
-    parent: "installation"
+    parent: "packages"
     weight: 3
 
 draft: false
@@ -24,7 +24,7 @@ draft: false
 
 Download the script that helps generate and maintain certificate infrastructure sufficient to run a Kubernetes cluster:
 ```
-curl -OL https://raw.githubusercontent.com/containerum/containerum-docs/develop/content/files/gen-kube-ca.sh
+curl -OL https://raw.githubusercontent.com/containerum/cdk-docs/master/content/files/gen-kube-ca.sh
 chmod +x gen-kube-ca.sh
 ```
 
@@ -508,4 +508,4 @@ done
 
 Done!
 
-Now you can proceed to creating [kubeconfig files](/kubernetes/installation/3kubernetes-configuration-files).
+Now you can proceed to creating [kubeconfig files](/installation/packages/3kubernetes-configuration-files).

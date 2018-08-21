@@ -21,11 +21,11 @@ Containerum documentation walks you through all aspects of Containerum installat
 
 **[About](/about)** contains Documentation overview.
 
-**[Installation](/installation/prerequirements)** contains describes how to bootstrap Containerum Distribution of Kubernetes (CDK) on-premises.
+**[Installation](/installation/prerequirements)** contains describes how to bootstrap Containerum Distribution of Kubernetes (CDK) using Kubeadm or from binaries.
 
 **[Plugins](/plugins/)** section describes how to install and configure plugins that work best with CDK.
 
-**[Release notes](/release-notes/)** describe what's new in Containerum Distribution of Kubernetes. The release notes section describes changes and features check report for each of the key components of Kubernetes.
+**[Release notes](/release-notes/)** describe what's new in Containerum Distribution of Kubernetes.
 
 You might also want to check out the **[FAQ](/faq)**.
 

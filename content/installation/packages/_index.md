@@ -1,14 +1,14 @@
 ---
-title: Kubernetes Components Installation - Containerum
+title: CDK Installation
 linktitle: Intro
-description: Bootstrapping Kubernetes components from binaries.
+description: Bootstrapping Containerum Distribution of Kubernetes from packages.
 
-categories: []
+categories: [top]
 keywords: []
 
 menu:
   docs:
-    parent: "installation"
+    parent: "packages"
     weight: 1
     identifier: kube-inst-overview
 
@@ -17,7 +17,7 @@ draft: false
 
 # Kubernetes installation overview
 
-This section covers installation of a production-ready Kubernetes cluster from binaries. To set up a high availability Kubernetes cluster follow the instructions in this section step-by-step.
+This section covers installation of a production-ready Kubernetes cluster from packages with Containerum Distribution of Kubernetes. To set up a high availability Kubernetes cluster follow the instructions in this section step-by-step.
 
 - Check out the variables  
 Read through the list of the variables that will be used throughout installation process.
@@ -49,4 +49,4 @@ Flannel is a virtual network that attaches IP addresses to containers.
 - run smoke tests  
 This section describes how to run a full set of tests to make sure that the Kubernetes cluster functions correctly.
 
-Begin [Kubernetes installation](/kubernetes/installation/1intro).
+Begin [Kubernetes installation](/installation/packages/1intro).

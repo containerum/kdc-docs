@@ -8,7 +8,7 @@ keywords: []
 
 menu:
   docs:
-    parent: "installation"
+    parent: "packages"
     weight: 9
 
 draft: false
@@ -31,4 +31,4 @@ kubectl apply -f kube-flannel.yml
 
 Done!
 
-Now you can proceed to [configuring DNS](/kubernetes/installation/9dns).
+Now you can proceed to [configuring DNS](/installation/packages/9dns).

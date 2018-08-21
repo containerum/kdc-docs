@@ -8,7 +8,7 @@ keywords: []
 
 menu:
   docs:
-    parent: "installation"
+    parent: "packages"
     weight: 11
 
 draft: false
@@ -337,4 +337,4 @@ UID       PID       PPID      C         STIME     TIME      CMD
 I0514 14:05:16.501354   15096 x:0] Exiting with status: 0
 ```
 
-You've just bootstrapped a production-ready Kubernetes cluster with Containerum Kubernetes Package. Now you can proceed to [Containerum platform installation](/platform/installation).
+You've just bootstrapped a production-ready Kubernetes cluster with Containerum Kubernetes Package. Now you can install [Containerum platform](https://docs.containerum.com/installation/) to manage containerized applications running in Kubernetes.
