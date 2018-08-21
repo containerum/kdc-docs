@@ -46,8 +46,15 @@ pygmentsStyle = "monokai"
   url = "/contribute/"
 
 [[menu.docs]]
-  name = "Installation"
+  name = "Install"
   weight = 7
-  identifier = "installation"
+  identifier = "installation_kubeadm"
   parent = "kube-installation"
-  url = "/installation/installation/"
+  url = "/installation/installation_kubeadm/"
+
+[[menu.docs]]
+  name = "Install from packages"
+  weight = 8
+  identifier = "packages"
+  parent = "kube-installation"
+  url = "/installation/packages/"

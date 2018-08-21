@@ -17,4 +17,4 @@ draft: false
 
 # Kubernetes plugins
 This section describes how to install and configure Kubernetes plugins.  
-The plugins features here have been tested for conformance and are guaranteed to be compatible with Containerum Distribution of Kubernetes.
+The plugins featured here have been tested for conformance and are guaranteed to be compatible with Containerum Distribution of Kubernetes.

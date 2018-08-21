@@ -8,7 +8,7 @@ keywords: []
 
 menu:
   docs:
-    parent: "installation"
+    parent: "packages"
     weight: 3
 
 draft: false
@@ -508,4 +508,4 @@ done
 
 Done!
 
-Now you can proceed to creating [kubeconfig files](/kubernetes/installation/3kubernetes-configuration-files).
+Now you can proceed to creating [kubeconfig files](/installation/packages/3kubernetes-configuration-files).

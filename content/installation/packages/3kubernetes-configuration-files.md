@@ -8,7 +8,7 @@ keywords: []
 
 menu:
   docs:
-    parent: "installation"
+    parent: "packages"
     weight: 4
 
 draft: false
@@ -275,4 +275,4 @@ done
 
 Done!
 
-Now you can proceed to [etcd installation](/kubernetes/installation/4etcd).
+Now you can proceed to [etcd installation](/installation/packages/4etcd).

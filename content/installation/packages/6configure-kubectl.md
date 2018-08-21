@@ -8,7 +8,7 @@ keywords: []
 
 menu:
   docs:
-    parent: "installation"
+    parent: "packages"
     weight: 7
 
 draft: false
@@ -66,4 +66,4 @@ etcd-0               Healthy   {"health":"true"}
 
 Done!
 
-Now you can proceed to [bootstrapping worker nodes](/kubernetes/installation/7bootstrap-workers).
+Now you can proceed to [bootstrapping worker nodes](/installation/packages/7bootstrap-workers).
