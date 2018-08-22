@@ -1,7 +1,7 @@
 ---
 title: Nginx Ingress-Controller
 linktitle: NGINX Ingress Controller
-description: Installing Nginx Ingress-Controller to access Containerum Platform by an External IP.
+description: Installing Nginx Ingress-Controller to access applications in Kubernetes by an External IP.
 
 categories: []
 keywords: []
@@ -9,7 +9,7 @@ keywords: []
 menu:
   docs:
     parent: "plugins"
-    weight: 2
+    weight: 5
     identifier: nginx-ingress
 
 draft: false
@@ -17,7 +17,7 @@ draft: false
 
 # How to install Ingress-Controller for Kubernetes
 
-Ingress Controller is required to access Containerum Platform by an External IP.
+Ingress Controller is required to access applications running in Kubernetes by an External IP. Рекомендуемые версии
 
 ## Installation
 Install the ingress-controller from the Kubernetes repository:
