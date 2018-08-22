@@ -15,15 +15,17 @@ menu:
 draft: false
 ---
 # How to install Docker
-Docker это TVOY TEKST TUT. Он нужен для того, чтобы TVOY TEKST TUT.
+Docker это один из “Container Runtime” используемых в Kubernetes. "Container runtime" это программное обеспечение, которое отвечает за запуск контейнеров.
 
-CDK рекомендуется использовать с версиями Docker такими-то, такими-то. Проблемы могут быть с такими.
+CDK рекомендуется использовать с Docker v1.13.1, v17.03.2. Может работать с версиями выше, но тестирование не произвонидилось и могут возникнуть проблемы.
 
 ## Особенности этого runtime
+Docker - классический container runtime для Kubernetes. В сравнении с CRI-O более тяжеловесен. Устанавливается из коробки
 Чем отличается от cri-o и containerd - в каких случаях лучше Docker
 
 
 ## Docker 1.13.1 install:
+
 На CentOS:
 ```
 $ sudo yum install docker
@@ -31,5 +33,17 @@ $ sudo sed -i 's/native.cgroupdriver=systemd/native.cgroupdriver=cgroupfs/' /usr
 $ sudo systemctl daemon-reload
 $ sudo systemctl start docker && sudo systemctl enable docker
 ```
-На Ubuntu:
-MEGATEKST HERE
+
+На Ubuntu:  
+```bash
+$ curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
+$ sudo add-apt-repository \
+       "deb https://apt.dockerproject.org/repo/ \
+       ubuntu-$(lsb_release -cs) \
+       main"
+$ sudo apt-get update
+$ sudo apt-get -y install docker-engine
+$ sudo sed -i 's/native.cgroupdriver=systemd/native.cgroupdriver=cgroupfs/' /usr/lib/systemd/system/docker.service
+$ sudo systemctl daemon-reload
+$ sudo systemctl start docker && sudo systemctl enable docker
+```

@@ -25,8 +25,8 @@ Install the ingress-controller from the Kubernetes repository:
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
 ```
 
-## Service creation
-Ceate a service for the ingress-controller. Create a yaml file (e.g., `ingress-svc.yaml`):
+### Service creation
+Create a service for the ingress-controller. Create a yaml file (e.g., `ingress-svc.yaml`):
 
 ```
 apiVersion: v1
