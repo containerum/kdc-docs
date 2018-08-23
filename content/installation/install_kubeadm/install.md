@@ -59,7 +59,8 @@ yum update
 Kubeadm is necessary to install Kubernetes, kubectl is a command line tool for Kubernetes, and kubelet is a client for managing worker nodes in Kubernetes. Run:
 
 ```
-yum install kubeadm
+yum install kubeadm kubelet kubectl
+systemctl enable kubelet && systemctl start kubelet
 ```
 
 ## Initialize kubeadm
