@@ -15,18 +15,17 @@ menu:
 draft: false
 ---
 # How to install Docker
-Docker это один из “Container Runtime” используемых в Kubernetes. "Container runtime" это программное обеспечение, которое отвечает за запуск контейнеров.
+Docker is one of container runtimes used in Kubernetes. Container runtime is software responsible for launching containers.
 
-CDK рекомендуется использовать с Docker v1.13.1, v17.03.2. Может работать с версиями выше, но тестирование не произвонидилось и могут возникнуть проблемы.
+It is recommended to use CDK with Docker v1.13.1, v17.03.2. CDK also supports higher Docker versions, but compatibility is not completely guaranteed.
 
-## Особенности этого runtime
-Docker - классический container runtime для Kubernetes. В сравнении с CRI-O более тяжеловесен. Устанавливается из коробки
-Чем отличается от cri-o и containerd - в каких случаях лучше Docker
+## Docker description
+Docker is a classic container runtime for Kubernetes. Runs out-of-the-box.
 
 
 ## Docker 1.13.1 install:
 
-На CentOS:
+**CentOS:**
 ```
 $ sudo yum install docker
 $ sudo sed -i 's/native.cgroupdriver=systemd/native.cgroupdriver=cgroupfs/' /usr/lib/systemd/system/docker.service
@@ -34,7 +33,7 @@ $ sudo systemctl daemon-reload
 $ sudo systemctl start docker && sudo systemctl enable docker
 ```
 
-На Ubuntu:  
+**Ubuntu:**  
 ```bash
 $ curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
 $ sudo add-apt-repository \

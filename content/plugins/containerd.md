@@ -12,7 +12,7 @@ menu:
     weight: 4
     identifier: containerd
 
-draft: false
+draft: true
 ---
 # How to install containerd
 Containerd это TVOY TEKST TUT. Он нужен для того, чтобы TVOY TEKST TUT.

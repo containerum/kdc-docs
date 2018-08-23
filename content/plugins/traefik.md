@@ -12,7 +12,7 @@ menu:
     weight: 7
     identifier: traefik
 
-draft: false
+draft: true
 ---
 
 # How to install Traefik for Kubernetes

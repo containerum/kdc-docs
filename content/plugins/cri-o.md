@@ -12,7 +12,7 @@ menu:
     weight: 3
     identifier: cri-o
 
-draft: false
+draft: true
 ---
 # How to install Cri-o
 Cri-o это TVOY TEKST TUT. Он нужен для того, чтобы TVOY TEKST TUT.

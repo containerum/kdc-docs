@@ -17,11 +17,12 @@ draft: false
 
 # How to install Flannel for Kubernetes
 
-Flannel is a simple and easy way to configure a layer 3 network fabric designed for Kubernetes.
+Flannel is CNI Calico is a CNI (Container Network Interface) plugin for Kubernetes. It allows configuring a layer 3 network fabric designed for Kubernetes.
 
 
 ## When to use Flannel
-Flannel используется как один из плагинов cni в Kubernetes для реализации сети. Не поддерживает Network Policy в Kubernetes. Отвечает за распределение аренды подсетей каждому хосту из большего, предварительно сконфигурированного адресного пространства. Flannel использует API Kubernetes или etcd напрямую для хранения сетевой конфигурации. Пакеты пересылаются с использованием одного из нескольких бэкэнд-механизмов, включая VXLAN.
+Flannel is used as one of CNI network plugins. It doesn't support Network Policy in Kubernetes. Flannel is responsible for distributing a subnet lease to each host out of a larger, preconfigured address space.
+Flannel uses API Kubernetes or directly etcd to store network configuration. Packages are sent using one of several backend mechanisms, including VXLAN.
 
 ## Installation
 For flannel to work correctly, you must pass --pod-network-cidr=10.244.0.0/16 to kubeadm init
@@ -35,6 +36,7 @@ EOF
 sysctl --system
 ```
 
+After kubeadm initialisation run:
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.10.0/Documentation/kube-flannel.yml

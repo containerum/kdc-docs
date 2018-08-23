@@ -12,7 +12,7 @@ menu:
     weight: 6
     identifier: haproxy
 
-draft: false
+draft: true
 ---
 
 # How to install HAProxy for Kubernetes
