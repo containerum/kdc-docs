@@ -45,7 +45,7 @@ spec:
     targetPort: 443
     protocol: TCP
   selector:
-    app: ingress-nginx
+    app.kubernetes.io/name: ingress-nginx
   externalIPs:
   - %EXTERNAL IP%
   ```
