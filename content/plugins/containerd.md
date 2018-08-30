@@ -15,12 +15,12 @@ menu:
 draft: true
 ---
 # How to install containerd
-Containerd это TVOY TEKST TUT. Он нужен для того, чтобы TVOY TEKST TUT.
+Containerd is one of container runtimes used in Kubernetes. Container runtime is software responsible for launching containers.
 
-CDK рекомендуется использовать с версиями containerd такими-то, такими-то. Проблемы могут быть с такими.
+CDK рекомендуется использовать с версиями containerd v1.1.3, но также будут поддерживаться версии 1.0.\*, 1.1.\*
 
 ## Особенности этого runtime
-Чем отличается от docker и cri-o - в каких случаях лучше containerd
+Containerd используется тем же Docker. Используя Containerd в качестве container runtime в Kubernetes можно добиться максимальной производительности при запуске контейнеров за счет отсутствия лишних интерфейсов между Kubelet и системой.
 
 
 ## Containerd install:
