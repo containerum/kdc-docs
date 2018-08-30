@@ -48,7 +48,8 @@ spec:
     app.kubernetes.io/name: ingress-nginx
   externalIPs:
   - %EXTERNAL IP%
-  ```
+```
+
 Add your machine's external IP address to %EXTERNAL IP%
 
 Then run:
