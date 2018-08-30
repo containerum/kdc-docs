@@ -12,25 +12,27 @@ menu:
     weight: 7
     identifier: traefik
 
-draft: true
+draft: false
 ---
 
 # How to install Traefik for Kubernetes
 
 Traefik is required to access applications running in Kubernetes by an External IP.
 
-## When to use Traefik
-Упрощает управление ingress в Kubernetes. Предоставляет возможность использовать из коробки сертификаты Let's Encrypt. Имеет Rest API. Предоставляет метрики для Prometheus (и много чего еще перечисленного на сайте).
+## Description
+Traefik facilitates managing ingresses in Kubernetes. It allows using Let's Encrypt certificates out-of-the-box and has Rest API, can be integrated with Prometheus, and lots more.
 
 ## Installation
 
-Создайте ClusterRole для ServiceAccount traefik-ingress-controller:
+Create a ClusterRole for ServiceAccount traefik-ingress-controller:
 ```
 kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/traefik-rbac.yaml
 ```
 
+There are two ways to launch Traefik: as a Deployment and as a DaemonSet.
 
-При разворачивании traefik в качестве Deploy создайте файл traefik-deployment.yaml со следующим содержимым:
+When launching Traefik as **Deployment** create `traefik-deployment.yaml` as follows:
+
 ```yaml
 ---
 apiVersion: v1
@@ -92,15 +94,15 @@ spec:
   externalIPs:
   - {$EXTERNAL_IP}
 ```
-Укажите в {$EXTERNAL_IP} IP адреса на которые будет идти трафик.
+Set the IP addresses which will receive external traffic in {$EXTERNAL_IP}.
 
-Запустите Traefik в Kubernetes:
+Launch Traefik in Kubernetes:
 ```bash
 kubectl apply -f traefik-deployment.yaml
 ```
 
 
-При разворачивании traefik в качестве DS создайте файл traefik-ds.yaml со следующим содержимым:
+When launching Traefik as **DaemonSet** create `traefik-ds.yaml` as follows:
 ```yaml
 ---
 apiVersion: v1
@@ -162,14 +164,11 @@ spec:
       name: admin
 ```
 
-Запустите Traefik в Kubernetes:
+Launch Traefik in Kubernetes:
 ```bash
 kubectl apply -f traefik-ds.yaml
 ```
 
-Также вы можете запустить ui для Traefik:
-```bash
-kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/ui.yaml
-```
+Done!
 
-Пропишите на своем хосте `/etc/hosts` путь до `traefik-ui.minikube` и перейдите в своем браузере в ui
+For more information about Traefik see [the docs](https://docs.traefik.io).

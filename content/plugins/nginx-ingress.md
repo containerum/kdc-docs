@@ -17,7 +17,7 @@ draft: false
 
 # How to install Ingress-Controller for Kubernetes
 
-Ingress Controller is required to access applications running in Kubernetes by an External IP. Рекомендуемые версии
+Ingress Controller is required to access applications running in Kubernetes by an External IP. 
 
 ## Installation
 Install the ingress-controller from the Kubernetes repository:

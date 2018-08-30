@@ -48,4 +48,4 @@ Note that flannel works on amd64, arm, arm64 and ppc64le, but until flannel v0.1
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/c5d10c8/Documentation/kube-flannel.yml
 ```
 
-For more information about flannel, see [the CoreOS flannel repository on GitHub](https://github.com/coreos/flannel).
+For more information about flannel see [the CoreOS flannel repository on GitHub](https://github.com/coreos/flannel).
