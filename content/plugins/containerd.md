@@ -24,4 +24,24 @@ CDK рекомендуется использовать с версиями cont
 
 
 ## Containerd install:
-Если на разных линуксах по-разному, опиши
+Centos:
+
+Скачайте и распакуйте containerd:
+```bash
+curl -OL https://storage.googleapis.com/cri-containerd-release/cri-containerd-1.1.3.linux-amd64.tar.gz
+tar --no-overwrite-dir -C / -xzf cri-containerd-1.1.3.linux-amd64.tar.gz
+systemctl daemon-reload
+systemctl enable containerd
+systemctl start containerd
+```
+
+
+```bash
+modprobe br_netfilter
+
+echo 1 > /proc/sys/net/bridge/bridge-nf-call-iptables
+echo 1 > /proc/sys/net/ipv4/ip_forward
+sudo sysctl -p
+
+kubeadm init --cri-socket="/var/run/containerd/containerd.sock"
+```
