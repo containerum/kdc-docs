@@ -16,3 +16,5 @@ draft: false
 ---
 
 # Installing CDK with Kubeadm
+
+This section describes how to install Containerum Distribution of Kubernetes (CDK) using kubeadm. Before installing Kubernetes, make sure your machines meet the [requirements](/installation/prerequirements). Currently CDK can only be installed on CenOS machines.
