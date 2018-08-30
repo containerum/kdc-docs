@@ -1,7 +1,7 @@
 ---
 title: Nginx Ingress-Controller
 linktitle: NGINX Ingress Controller
-description: Installing Nginx Ingress-Controller to access Containerum Platform by an External IP.
+description: Installing Nginx Ingress-Controller to access applications in Kubernetes by an External IP.
 
 categories: []
 keywords: []
@@ -9,7 +9,7 @@ keywords: []
 menu:
   docs:
     parent: "plugins"
-    weight: 2
+    weight: 5
     identifier: nginx-ingress
 
 draft: false
@@ -17,7 +17,7 @@ draft: false
 
 # How to install Ingress-Controller for Kubernetes
 
-Ingress Controller is required to access Containerum Platform by an External IP.
+Ingress Controller is required to access applications running in Kubernetes by an External IP. 
 
 ## Installation
 Install the ingress-controller from the Kubernetes repository:
@@ -25,8 +25,8 @@ Install the ingress-controller from the Kubernetes repository:
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
 ```
 
-## Service creation
-Ceate a service for the ingress-controller. Create a yaml file (e.g., `ingress-svc.yaml`):
+### Service creation
+Create a service for the ingress-controller. Create a yaml file (e.g., `ingress-svc.yaml`):
 
 ```
 apiVersion: v1
@@ -45,10 +45,11 @@ spec:
     targetPort: 443
     protocol: TCP
   selector:
-    app: ingress-nginx
+    app.kubernetes.io/name: ingress-nginx
   externalIPs:
   - %EXTERNAL IP%
-  ```
+```
+
 Add your machine's external IP address to %EXTERNAL IP%
 
 Then run:
@@ -56,7 +57,7 @@ Then run:
 kubectl apply -f ingress-svc.yaml
 ```
 
-Check the the services are there:
+Check if the services are there:
 ```
 kubectl get svc -n ingress-nginx
 ```
