@@ -12,21 +12,21 @@ menu:
     weight: 4
     identifier: containerd
 
-draft: true
+draft: false
 ---
 # How to install containerd
 Containerd is one of container runtimes used in Kubernetes. Container runtime is software responsible for launching containers.
 
-CDK рекомендуется использовать с версиями containerd v1.1.3, но также будут поддерживаться версии 1.0.\*, 1.1.\*
+It is recommended to use CDK with containerd v1.1.3, but versions 1.0.\*, 1.1.\* are also supported.
 
-## Особенности этого runtime
-Containerd используется тем же Docker. Используя Containerd в качестве container runtime в Kubernetes можно добиться максимальной производительности при запуске контейнеров за счет отсутствия лишних интерфейсов между Kubelet и системой.
+## Description
+Containerd is used in the same way as Docker. Containerd as a container runtime in Kubernetes allows for the highest performance when launching containers due to the lack of excessive interfaces between Kubelet and the system.
 
 
-## Containerd install:
-Centos:
+## Containerd installation:
+For Centos:
 
-Скачайте и распакуйте containerd:
+Download, extract and start containerd:
 ```bash
 curl -OL https://storage.googleapis.com/cri-containerd-release/cri-containerd-1.1.3.linux-amd64.tar.gz
 tar --no-overwrite-dir -C / -xzf cri-containerd-1.1.3.linux-amd64.tar.gz
@@ -35,6 +35,7 @@ systemctl enable containerd
 systemctl start containerd
 ```
 
+Configure network and initialize Kubernetes:
 
 ```bash
 modprobe br_netfilter
@@ -45,3 +46,7 @@ sudo sysctl -p
 
 kubeadm init --cri-socket="/var/run/containerd/containerd.sock"
 ```
+
+Done!
+
+For more information refer to [containerd documentation](https://github.com/containerd/containerd/blob/master/docs/getting-started.md).

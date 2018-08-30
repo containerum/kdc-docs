@@ -17,13 +17,13 @@ draft: false
 # How to install Docker
 Docker is one of container runtimes used in Kubernetes. Container runtime is software responsible for launching containers.
 
-It is recommended to use CDK with Docker v1.13.1, v17.03.2. CDK also supports higher Docker versions, but compatibility is not completely guaranteed.
+It is recommended to use CDK with Docker v1.13.1, v17.03.2. CDK also supports higher Docker versions, but compatibility is not guaranteed.
 
-## Docker description
+## Description
 Docker is a classic container runtime for Kubernetes. Runs out-of-the-box.
 
 
-## Docker 1.13.1 install:
+## Docker 1.13.1 installation:
 
 **CentOS:**
 ```

@@ -1,7 +1,7 @@
 ---
 title: Cri-o
 linktitle: Cri-o
-description: How to install Cri-o
+description: How to install cri-o
 
 categories: []
 keywords: []
@@ -12,23 +12,23 @@ menu:
     weight: 3
     identifier: cri-o
 
-draft: true
+draft: false
 ---
-# How to install Cri-o
+# How to install cri-o
 Cri-o is one of container runtimes used in Kubernetes. Container runtime is software responsible for launching containers.
 
-CDK версии 1.11.2 рекомендуется использовать с версиями Cri-o 1.11.2.
+It is recommended to use CDK 1.11.2 with cri-o 1.11.2.
 
-## Особенности этого runtime
+## Description
 
-В отличии от Docker, Cri-o более легковесный в качестве runtime для Kubernetes.
+Compared to Docker, cri-o is a more lightweight runtime for Kubernetes.
 
 
-## Cri-o install:
+## сri-o installation:
 
-Centos:  
+For CentOS:  
 
-Установите зависимости:  
+Install the dependencies:  
 ```bash
 yum install -y \
   btrfs-progs-devel \
@@ -50,23 +50,24 @@ yum install -y \
   skopeo-containers
 ```
 
-Для работы Cri-o необходимо установить runc (The OCI runtime to launch the container).
+First install runc (The OCI runtime to launch the container):
 ```bash:
 curl -OL https://github.com/opencontainers/runc/releases/download/v1.0.0-rc4/runc.amd64
 chmod +x runc.amd64
 sudo mv runc.amd64 /usr/bin/runc
 ```
 
-Посмотрите установленную версию:
+Check the version:
 ```bash
 runc -version
 ```
+Output:  
 ```bash
 runc version 1.0.0-rc4
 spec: 1.0.0
 ```
 
-Установите crictl:
+Install crictl:
 ```bash
 VERSION="v1.11.1"
 wget https://github.com/kubernetes-incubator/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz
@@ -74,14 +75,14 @@ sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
 rm -f crictl-$VERSION-linux-amd64.tar.gz
 ```
 
-Склонируйте репозиторий cri-o и переключитесь на тег вашей версии. Для Kubernetes v1.11.* мы используем v1.11.2:
+Clone the cri-o repo and switch to the required version. We recommend using v1.11.2 for Kubernetes v1.11.* :
 ```bash
 git clone https://github.com/kubernetes-incubator/cri-o
 cd cri-o
 git checkout v1.11.2
 ```
 
-Сборка и установка:  
+Build and install cri-o:  
 ```bash
 make install.tools
 ```
@@ -94,12 +95,12 @@ make
 sudo make install
 ```
 
-Если cri-o устанавливается впервый раз, то необходимо сгенерировать файлы конфигурации:
+If you install cri-o for the first time, it is necessary to generate configuration files:
 ```bash
 sudo make install.config
 ```
 
-Запустите system daemon для crio:
+Launch system daemon for cri-o:
 ```bash
 sudo sh -c 'echo "[Unit]
 Description=OCI-based implementation of Kubernetes Container Runtime Interface
@@ -120,7 +121,7 @@ sudo systemctl enable crio
 sudo systemctl start crio
 ```
 
-Проверьте работу cri-o:
+Check if cri-o is running:
 ```bash
 sudo crictl --runtime-endpoint unix:///var/run/crio/crio.sock version
 ```
@@ -132,7 +133,7 @@ RuntimeVersion:  1.11.2
 RuntimeApiVersion:  v1alpha1
 ```
 
-Инициализируйте кластер kubernetes:
+Initialize the Kubernetes cluster:
 
 ```
 modprobe br_netfilter
@@ -143,3 +144,7 @@ sudo sysctl -p
 
 kubeadm init --cri-socket="/var/run/crio/crio.sock"
 ```
+
+Done!
+
+For more information refer to [cri-o documentation](https://github.com/kubernetes-incubator/cri-o).
