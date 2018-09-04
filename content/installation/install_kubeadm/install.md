@@ -34,7 +34,21 @@ cat <<EOF >  /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 EOF
-sysctl --system
+sysctl -p /etc/sysctl.d/k8s.conf
+```
+
+If you get error message like this:
+```
+sysctl: cannot stat /proc/sys/net/bridge/bridge-nf-call-ip6tables: No such file or directory
+sysctl: cannot stat /proc/sys/net/bridge/bridge-nf-call-iptables: No such file or directory
+```
+
+You need to load kernel module br_netfilter:
+```
+modprobe br_netfilter
+cat <<EOF >  /etc/modules-load.d/br_netfilter.conf
+br_netfilter
+EOF
 ```
 
 ## Set Containerum repository
@@ -56,7 +70,7 @@ yum update
 
 ## Install kubeadm, kubectl, and kubelet
 
-Kubeadm is necessary to install Kubernetes, kubectl is a command line tool for Kubernetes, and kubelet is a client for managing worker nodes in Kubernetes. Run:
+Kubeadm is a tool for bootstraping a Kubernetes cluster, kubectl is a command line tool for Kubernetes, and kubelet is a client for managing worker nodes in Kubernetes. Run:
 
 ```
 yum install kubeadm kubelet kubectl
