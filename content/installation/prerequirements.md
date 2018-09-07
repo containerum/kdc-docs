@@ -199,4 +199,4 @@ $ sudo systemctl start etcd
 Done!
 -->
 
-Now you can proceed to Kubernetes installation [using kubeadm](/installation/install_kubeadm/) or [from packages](/installation/packages/).
+Now you can proceed to CDK [installation](/installation/packages/).

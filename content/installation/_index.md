@@ -23,4 +23,4 @@ Containerum Distribution of Kubernetes can bootstrapped from packages or you can
 
 Containerum Distribution of Kubernetes installed from packages relies on containerd runtime. Containerd installation is also covered in this guide.
 
-Make sure that your VMs meet the [requirements](/installation/prerequirements) and then proceed to installation instructions - [using kubeadm](/installation/install_kubeadm/) or [from packages](/installation/packages/).
+Make sure that your VMs meet the [requirements](/installation/prerequirements) and then proceed to [installation instructions](/installation/packages/).
