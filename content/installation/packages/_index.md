@@ -46,7 +46,7 @@ Flannel is a virtual network that attaches IP addresses to containers.
 - Configure DNS add-on  
 [DNS add-on](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/) is a DNS-based service discovery to applications running in the Kubernetes cluster.
 
-- run smoke tests  
+- run tests  
 This section describes how to run a full set of tests to make sure that the Kubernetes cluster functions correctly.
 
 Begin [Kubernetes installation](/installation/packages/1intro).

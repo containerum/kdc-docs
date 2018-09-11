@@ -58,7 +58,6 @@ DEFROUTE=yes
 DEVICE=eth0
 GATEWAY=192.168.0.1
 IPADDR=192.168.0.2
-MTU=1500
 NETMASK=255.255.255.0
 ONBOOT=yes
 TYPE=Ethernet
@@ -70,9 +69,8 @@ USERCTL=no
 ```
 BOOTPROTO=none
 DEVICE=eth1
-IPADDR=10.0.10.1
-MTU=1500
-NETMASK=255.255.255.0
+IPADDR=192.0.2.1
+NETMASK=255.255.255.252
 ONBOOT=yes
 TYPE=Ethernet
 USERCTL=no
@@ -106,4 +104,4 @@ sudo chown root:root /etc/pki/rpm-gpg/RPM-GPG-KEY-ExonLab
 
 Key fingerprint: `2ED4 CBD2 309F 2C75 1642  CA7B 4E39 9E04 3CDA 4338`
 
-Now you can proceed to [configuring certificates.](/installation/packages/2certificates)
+Now you can proceed to [generating certificates.](/installation/packages/2certificates)

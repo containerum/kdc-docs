@@ -43,6 +43,7 @@ Run:
 
 sudo cp ca.crt etcd.crt etcd.key /etc/etcd/
 sudo chown etcd:etcd /etc/etcd/*.key /etc/etcd/*.crt
+sudo chmod 640 /etc/etcd/*.key
 
 {{< / highlight >}}
 ```
@@ -59,6 +60,7 @@ ETCD_NAME=$(hostname -s)
 
 Edit the etcd config file in `/etc/etcd/etcd.conf`. You should uncomment the lines below and replace their value with the variables retrieved above:
 ```
+cat <<EOF > /etc/etcd/etcd.conf
 ETCD_LISTEN_PEER_URLS="https://${INTERNAL_IP}:2380"
 ETCD_LISTEN_CLIENT_URLS="https://127.0.0.1:2379,https://${INTERNAL_IP}:2379"
 ETCD_NAME=${ETCD_NAME}
@@ -75,6 +77,7 @@ ETCD_PEER_CERT_FILE="/etc/etcd/etcd.crt"
 ETCD_PEER_KEY_FILE="/etc/etcd/etcd.key"
 ETCD_PEER_CLIENT_CERT_AUTH="true"
 ETCD_PEER_TRUSTED_CA_FILE="/etc/etcd/ca.crt"
+EOF
 ```
 
 > **Note**: In the case of one etcd node these variables are not required:

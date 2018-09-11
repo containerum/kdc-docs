@@ -221,58 +221,6 @@ done
 {{< / highlight >}}
 ```
 
-## Create a configuration file for data and key encryption
-
-Kubernetes stores data about cluster state, application configuration and secrets. Kubernetes supports encrypting all cluster data.
-
-### Encryption key
-
-Create an encryption key:
-
-```bash
-{{< highlight bash >}}
-ENCRYPTION_KEY=$(head -c 32 /dev/urandom | base64)
-{{< / highlight >}}
-```
-
-### Configuration file
-
->**Warning**: This part is not required. Secrets encryption is an experimental feature in Kubernetes. You may use it only at your own risk.
-
-Create `encryption-config.yaml` as follows:
-
-```yaml
-{{< highlight yaml >}}
-
-cat > encryption-config.yaml <<EOF
-kind: EncryptionConfig
-apiVersion: v1
-resources:
-  - resources:
-      - secrets
-    providers:
-      - aescbc:
-          keys:
-            - name: key1
-              secret: ${ENCRYPTION_KEY}
-      - identity: {}
-EOF
-
-{{< / highlight >}}
-```
-
-Copy `encryption-config.yaml` to each master:
-
-```bash
-{{< highlight bash >}}
-
-for instance in master-1 master-2 master-3; do
-  scp encryption-config.yaml ${instance}:~/
-done
-
-{{< / highlight >}}
-```
-
 Done!
 
 Now you can proceed to [etcd installation](/installation/packages/4etcd).

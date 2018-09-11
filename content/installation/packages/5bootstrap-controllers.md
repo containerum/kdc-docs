@@ -67,16 +67,9 @@ Otherwise, just update the `/etc/sysconfig/kube-apiserver` file with appropriate
 The node internal IP address will be used to manifest the API server as a cluster member. It must be set in `ADVERTISE_ADDRESS` variable.
 
 ```
-ADVERTISE_ADDRESS=167.99.207.46
+ADVERTISE_ADDRESS=192.0.2.1
 BIND_ADDRESS=0.0.0.0
 ETCD_SERVERS=https://127.0.0.1:2379
-```
-
->**Note**: You may use --experimental-encryption-provider-config=/etc/kubernetes/pki/encryption-config.yaml flag for secrets encryption, but please **be aware**: this feature is quite experimental.
-> To use `encryption-config.yaml` you should copy it to the appropriate directory:
-
-```
-sudo cp encryption-config.yaml /etc/kubernetes/pki
 ```
 
 ### Configure Kubernetes Controller Manager
@@ -128,17 +121,6 @@ sudo systemctl start kube-apiserver kube-controller-manager kube-scheduler
 Network Load Balancer supports only HTTP health checks, HTTPS is not supported. This can be fixed with nginx which will serve as a proxy. Install and configure nginx to accept health checks on port 80 and proxy the request to `https://127.0.0.1:6443/healthz`.
 
 > The `/healthz` endpoint doesn't require authorization.
-
-
-Execute the command below to add `epel-release` repo:
-
-```bash
-{{< highlight bash >}}
-
-sudo yum install epel-release
-
-{{< / highlight >}}
-```
 
 ### Verification
 Check the components status. Run:
@@ -236,15 +218,15 @@ Output:
 
 ```json
 {
-  "major": "1",
-  "minor": "10",
-  "gitVersion": "v1.10.2",
-  "gitCommit": "81753b10df112992bf51bbc2c2f85208aad78335",
-  "gitTreeState": "clean",
-  "buildDate": "2018-04-27T09:10:24Z",
-  "goVersion": "go1.9.3",
-  "compiler": "gc",
-  "platform": "linux/amd64"
+  "kind": "Status",
+  "apiVersion": "v1",
+  "metadata": {
+
+  },
+  "status": "Failure",
+  "message": "Unauthorized",
+  "reason": "Unauthorized",
+  "code": 401
 }
 ```
 
