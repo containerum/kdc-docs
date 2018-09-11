@@ -53,15 +53,23 @@ postal_code = []
 
 [master_node] # certificate for kubernetes control plane
 alias = "master" # HZ
-addresses = ["10.96.0.1"] # SAN for apiserver. Must contain all apiserver private addresses, public address (or public load balancer addr.) and cluster ip (10.96.0.1 here).
+addresses = ["10.96.0.1", "192.0.2.1", "192.168.0.1", "192.168.0.2", "192.168.0.3"] # SAN for apiserver. Must contain all apiserver private addresses, public address (or public load balancer addr.) and cluster ip (10.96.0.1 here).
 
 [[worker_node]] # certificates for worker node
-alias = "wrk1" # must be same as hostname of node.
-addresses = ["node1", "192.168.1.2"] # internal ip addr and hostname of node
+alias = "node-01" # must be same as hostname of node.
+addresses = ["node-01", "192.168.0.11"] # internal ip addr and hostname of node
+
+[[worker_node]]
+alias = "node-02"
+addresses = ["node-02", "192.168.0.12"]
 
 [[etcd_node]] # certificates for etcd
 alias = "etcd1" # filename of etcd cert
-addresses = ["ectd1", "192.168.1.2"] # SAN for etcd
+addresses = ["ectd1", "192.168.1.5"] # SAN for etcd
+
+[[etcd_node]]
+alias = "etcd2"
+addresses = ["ectd2", "192.168.1.6"]
 
 [[extra_cert]] # you can generate some custom cert
 name = "custom_cert"
@@ -78,7 +86,7 @@ key_size = 2048
 
   [extra_cert.host] # SANs for custom cert
   alias = "etcd2"
-  addresses = ["etcd2", "127.0.0.1", "192.168.0.1"]
+  addresses = ["custom.example.com", "127.0.0.1", "192.168.0.111"]
 
 [ca] # certificate authority configuration
 root_dir = "cert"
@@ -98,7 +106,7 @@ key_size = 2048
 
 Arguments:
 
-`init-ca` - Initialize a CA and generate default set of certificates.  
+`init-ca` - Initialize a CA.  
 `gen-csr` - Prepare configuration for generating a CSRs.  
 `sign file.crt` - Use CA to sign a CSR in file.csr. Result in file.crt.
 

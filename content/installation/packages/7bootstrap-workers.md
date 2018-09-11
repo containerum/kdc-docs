@@ -121,9 +121,9 @@ kubectl get nodes
 
 ```
 NAME       STATUS    ROLES     AGE       VERSION
-worker-0   Ready     <none>    20s       v1.10.2
-worker-1   Ready     <none>    20s       v1.10.2
-worker-2   Ready     <none>    20s       v1.10.2
+node-01   Ready     <none>    20s       v1.10.2
+node-02   Ready     <none>    20s       v1.10.2
+node-03   Ready     <none>    20s       v1.10.2
 ```
 
 **Note**: Some nodes may have a status different from `Ready`. It's normal if some nodes are restarting.

@@ -41,9 +41,9 @@ Run:
 ```bash
 {{< highlight bash >}}
 
-sudo cp ca.crt etcd.crt etcd.key /etc/etcd/
-sudo chown etcd:etcd /etc/etcd/*.key /etc/etcd/*.crt
-sudo chmod 640 /etc/etcd/*.key
+sudo cp ca.crt etcd.crt etcd.key /etc/ssl/etcd/
+sudo chown etcd:etcd /etc/ssl/etcd/*.key /etc/ssl/etcd/*.crt
+sudo chmod 640 /etc/ssl/etcd/*.key
 
 {{< / highlight >}}
 ```
@@ -69,14 +69,14 @@ ETCD_ADVERTISE_CLIENT_URLS="https://${INTERNAL_IP}:2379"
 ETCD_INITIAL_CLUSTER="master-1=https://${ETCD_NODE_1_IP}:2380,master-2=https://${ETCD_NODE_2_IP}:2380,master-3=https://${ETCD_NODE_3_IP}:2380"
 ETCD_INITIAL_CLUSTER_TOKEN="etcd-cluster-1"
 ETCD_INITIAL_CLUSTER_STATE="new"
-ETCD_CERT_FILE="/etc/etcd/etcd.crt"
-ETCD_KEY_FILE="/etc/etcd/etcd.key"
-ETCD_TRUSTED_CA_FILE="/etc/etcd/ca.crt"
+ETCD_CERT_FILE="/etc/ssl/etcd/etcd.crt"
+ETCD_KEY_FILE="/etc/ssl/etcd/etcd.key"
+ETCD_TRUSTED_CA_FILE="/etc/ssl/etcd/ca.crt"
 ETCD_CLIENT_CERT_AUTH="true"
-ETCD_PEER_CERT_FILE="/etc/etcd/etcd.crt"
-ETCD_PEER_KEY_FILE="/etc/etcd/etcd.key"
+ETCD_PEER_CERT_FILE="/etc/ssl/etcd/etcd.crt"
+ETCD_PEER_KEY_FILE="/etc/ssl/etcd/etcd.key"
 ETCD_PEER_CLIENT_CERT_AUTH="true"
-ETCD_PEER_TRUSTED_CA_FILE="/etc/etcd/ca.crt"
+ETCD_PEER_TRUSTED_CA_FILE="/etc/ssl/etcd/ca.crt"
 EOF
 ```
 
@@ -111,9 +111,9 @@ List the etcd cluster member(s):
 
 sudo ETCDCTL_API=3 etcdctl member list \
   --endpoints=https://127.0.0.1:2379 \
-  --cacert=/etc/etcd/ca.crt \
-  --cert=/etc/etcd/etcd.crt \
-  --key=/etc/etcd/etcd.key
+  --cacert=/etc/ssl/etcd/ca.crt \
+  --cert=/etc/ssl/etcd/etcd.crt \
+  --key=/etc/ssl/etcd/etcd.key
 
 {{< / highlight >}}
 ```

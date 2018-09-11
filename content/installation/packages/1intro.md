@@ -82,9 +82,9 @@ USERCTL=no
 
 Put this in /etc/yum.repos.d/exonlab.repo:
 ```
-[exonlab-kubernetes110-testing]
+[exonlab-kubernetes1.11-testing]
 name=Exon lab kubernetes repo for CentOS
-baseurl=http://repo.containerum.io/centos/7/x86_64/
+baseurl=http://repo.containerum.io/centos/7/kubernetes-1_11-pkg/x86_64/
 skip_if_unavailable=False
 gpgcheck=1
 repo_gpgcheck=1
