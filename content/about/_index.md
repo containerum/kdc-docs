@@ -21,7 +21,7 @@ Containerum documentation walks you through all aspects of Containerum installat
 
 **[About](/about)** contains Documentation overview.
 
-**[Installation](/installation/prerequirements)** contains describes how to bootstrap Containerum Distribution of Kubernetes (CDK) using Kubeadm or from binaries.
+**[Installation](/installation/prerequirements)** contains describes how to bootstrap Containerum Distribution of Kubernetes (CDK) from binaries.
 
 **[Plugins](/plugins/)** section describes how to install and configure plugins that work best with CDK.
 

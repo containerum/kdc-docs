@@ -1,6 +1,6 @@
 ---
 title: Flannel Installation
-linktitle: Flannel
+linktitle: Install Flannel
 description: Installing Flannel - an overlay network for the cluster.
 
 categories: []
@@ -16,7 +16,7 @@ draft: false
 
 # Install Flannel
 
-Flannel is an etcd backed overlay network for containers. Download the Flannel networking manifest:
+Flannel is an etcd-backed overlay network for containers. Download the Flannel networking manifest:
 
 ```bash
 curl -OL https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml

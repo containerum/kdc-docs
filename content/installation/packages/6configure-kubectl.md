@@ -1,6 +1,6 @@
 ---
-title: Kubernetes Configure Kubectl
-linktitle: Kubectl
+title: Configuring kubectl
+linktitle: Configure kubectl
 description: Configuring the Kubernetes command line utility `kubectl`
 
 categories: []

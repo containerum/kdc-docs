@@ -1,6 +1,6 @@
 ---
 title: Kubernetes Variables
-linktitle: Variables
+linktitle: Intro
 description: Description of variables that will be used throughout the installation and network configuration info.
 
 categories: []
@@ -16,7 +16,7 @@ draft: false
 ---
 
 # Before you start
-Before you start bootstrapping a cluster with Containerum Kubernetes Package be sure to read through the variables that will be used throughout this installation guide. Also don't forget to configure the network and set Containerum repo in advance as described below.
+Before you start bootstrapping a cluster with Containerum Distribution of Kubernetes be sure to read through the variables that will be used throughout this installation guide. Also don't forget to configure the network and set Containerum repository in advance as described below.
 
 ## Variables  
 ### IP addresses
@@ -80,7 +80,7 @@ USERCTL=no
 
 ### Repository definition
 
-Put this in /etc/yum.repos.d/exonlab.repo:
+Add Containerum repository to yum. Put this in /etc/yum.repos.d/exonlab.repo:
 ```
 [exonlab-kubernetes1.11-testing]
 name=Exon lab kubernetes repo for CentOS

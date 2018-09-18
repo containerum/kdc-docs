@@ -62,7 +62,7 @@ sudo mkdir -p \
 
 ### Install docker
 
-Kubernetes suports many different runtimes. By default use docker. Alternative rintimes installation and configuration describes in [plugins](/plugins) section.
+Kubernetes supports various container runtimes. By default this installation uses docker. To install and configure alternative runtimes consult the [plugins](/plugins) section.
 
 ```bash
 {{< highlight bash >}}

@@ -1,6 +1,6 @@
 ---
 title: Kubeconfig files
-linktitle: Kubeconfig
+linktitle: Create Kubeconfigs
 description: Creating Kubernetes authentication configuration files.
 
 categories: []

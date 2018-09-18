@@ -58,7 +58,7 @@ sudo cp ca.crt ca.key kubernetes.crt kubernetes.key \
 {{< / highlight >}}
 ```
 
-Examine the default kube-apiserver.service systemd unit with `systemctl cat kube-apiserver.service`.
+Check the default kube-apiserver.service systemd unit with `systemctl cat kube-apiserver.service`.
 If you know the default flags don’t match your setup, copy the unit into `/etc/systemd/system/kube-apiserver.service` and make your changes there.
 
 Otherwise, just update the `/etc/sysconfig/kube-apiserver` file with appropriate IP addresses.
