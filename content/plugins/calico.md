@@ -34,7 +34,7 @@ cat <<EOF >  /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 EOF
-sysctl -p /etc/sysctl.d/k8s.conf
+sysctl --system
 ```
 
 If you get error message like this:
@@ -49,7 +49,6 @@ cat <<EOF >  /etc/modules-load.d/br_netfilter.conf
 br_netfilter
 EOF
 ```
-
 
 After kubeadm has been initialized, run:
 
