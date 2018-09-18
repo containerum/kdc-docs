@@ -1,6 +1,6 @@
 ---
 title: CDK Installation
-linktitle: Intro
+linktitle: Overview
 description: Bootstrapping Containerum Distribution of Kubernetes from packages.
 
 categories: [top]
@@ -20,10 +20,10 @@ draft: false
 This section covers installation of a production-ready Kubernetes cluster from packages with Containerum Distribution of Kubernetes. To set up a high availability Kubernetes cluster follow the instructions in this section step-by-step.
 
 - Check out the variables  
-Read through the list of the variables that will be used throughout installation process.
+Read through the list of the variables that will be used throughout the installation process.
 
 - Configure certificates  
-Generating certificates for certain IP, nodes, hostnames, etc. Certificates are needed for traffic encryption.
+Generating certificates for certain IP addresses, nodes, hostnames, etc. Certificates are needed for traffic encryption.
 
 - Configure authentication files for Kubernetes components  
 Authentication files are required for communication between Kubernetes components.
@@ -46,7 +46,7 @@ Flannel is a virtual network that attaches IP addresses to containers.
 - Configure DNS add-on  
 [DNS add-on](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/) is a DNS-based service discovery to applications running in the Kubernetes cluster.
 
-- run smoke tests  
+- run tests  
 This section describes how to run a full set of tests to make sure that the Kubernetes cluster functions correctly.
 
 Begin [Kubernetes installation](/installation/packages/1intro).

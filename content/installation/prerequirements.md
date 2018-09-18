@@ -22,8 +22,8 @@ This section contains hardware and environment requirements to cluster nodes.
 
 - You can use virtual or physical machines.
 - While you can build a cluster with 1 machine, in order to run all the examples and tests you will need at least **3 nodes**.
-- Nodes need to run some version of Linux with the x86_64 architecture. It may be possible to run Kubernetes on other OS and architectures, but this guide will use **CentOS**.
-- Apiserver and etcd work well on a machine with **2 cores and 2GB RAM** for small and medium cluster. Larger or more active clusters may require more cores.
+- Nodes need to run some version of Linux with the x86_64 architecture. It may be possible to run Kubernetes on other OS and architectures, but **this guide will use CentOS 7**.
+- Apiserver and etcd work well on a machine with **2 cores and 2GB RAM** for small and medium cluster. Larger or more active clusters may require more cores and RAM.
 - Other nodes can have any reasonable amount of resources and are not required to have the same configuration.
 - Each node must have a unique hostname.
 
@@ -57,13 +57,7 @@ etcd has a relatively small memory footprint but its performance still depends o
 
 Fast disks are the most critical factor for etcd deployment performance and stability.
 
-A slow disk will increase etcd request latency and potentially hurt cluster stability. Since etcd’s consensus protocol depends on persistently storing metadata to a log, a majority of etcd cluster members must write every request down to disk. Additionally, etcd will also incrementally checkpoint its state to disk so it can truncate this log. If these writes take too long, heartbeats may time out and trigger an election, undermining the stability of the cluster.
-
-etcd is very sensitive to disk write latency. Typically 50 sequential IOPS (e.g., a 7200 RPM disk) is required. For heavily loaded clusters, 500 sequential IOPS (e.g., a typical local SSD or a high performance virtualized block device) is recommended. Note that most cloud providers publish concurrent IOPS rather than sequential IOPS; the published concurrent IOPS can be 10x greater than the sequential IOPS.
-
-etcd requires only modest disk bandwidth but more disk bandwidth buys faster recovery times when a failed member has to catch up with the cluster. Typically 10MB/s will recover 100MB data within 15 seconds. For large clusters, 100MB/s or higher is suggested for recovering 1GB data within 15 seconds.
-
-When possible, back etcd’s storage with a SSD. A SSD usually provides lower write latencies and with less variance than a spinning disk, thus improving the stability and reliability of etcd. If using spinning disk, get the fastest disks possible (15,000 RPM). Using RAID 0 is also an effective way to increase disk speed, for both spinning disks and SSD. With at least three cluster members, mirroring and/or parity variants of RAID are unnecessary; etcd's consistent replication already gets high availability.
+etcd relies greatly on disks speed so we recommend using SSD disks to ensure deployment performance and scalability.
 
 ### Cluster model
 For highly available setups, you will need to decide how to host your etcd cluster. A cluster is composed of at least 3 members. It is recommended to stick to one of the following models:
@@ -199,4 +193,4 @@ $ sudo systemctl start etcd
 Done!
 -->
 
-Now you can proceed to Kubernetes installation [using kubeadm](/installation/install_kubeadm/) or [from packages](/installation/packages/).
+Now you can proceed to Kubernetes installation [from packages](/installation/packages/).

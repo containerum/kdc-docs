@@ -133,15 +133,32 @@ RuntimeVersion:  1.11.2
 RuntimeApiVersion:  v1alpha1
 ```
 
+Apply kernel parameters:
+```
+cat <<EOF >  /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+sysctl -p /etc/sysctl.d/k8s.conf
+```
+
+If you get error message like this:
+```
+sysctl: cannot stat /proc/sys/net/bridge/bridge-nf-call-ip6tables: No such file or directory
+sysctl: cannot stat /proc/sys/net/bridge/bridge-nf-call-iptables: No such file or directory
+```
+
+You need to load kernel module br_netfilter:
+```
+modprobe br_netfilter
+cat <<EOF >  /etc/modules-load.d/br_netfilter.conf
+br_netfilter
+EOF
+```
+
 Initialize the Kubernetes cluster:
 
 ```
-modprobe br_netfilter
-
-echo 1 > /proc/sys/net/bridge/bridge-nf-call-iptables
-echo 1 > /proc/sys/net/ipv4/ip_forward
-sudo sysctl -p
-
 kubeadm init --cri-socket="/var/run/crio/crio.sock"
 ```
 

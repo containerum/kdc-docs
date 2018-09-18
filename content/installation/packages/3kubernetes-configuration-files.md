@@ -1,6 +1,6 @@
 ---
 title: Kubeconfig files
-linktitle: Kubeconfig
+linktitle: Create Kubeconfigs
 description: Creating Kubernetes authentication configuration files.
 
 categories: []
@@ -43,7 +43,7 @@ Create the kubeconfig files for `controller manager`, `kubelet`, `kube-proxy`, `
 
 Each kubeconfig file requires Kubernetes API Server for connection. To ensure high availability, the IP-address of your load balancer will determine which Kubernetes API Server will be used.
 
-Specify the `containerum` static IP address:
+Specify the `Kubernetes api-server` static IP address:
 
 ```bash
 KUBERNETES_PUBLIC_IP=${PUBLIC_IP}
@@ -51,14 +51,14 @@ KUBERNETES_PUBLIC_IP=${PUBLIC_IP}
 
 ### Create a kubelet configuration file
 
-When generating kubeconfig for Kubelets, a client certificate matching the Kubelet's node hostname must be used (`worker-1 worker-2 worker-3` in the example below). This will ensure Kubelets are properly authorized by the Kubernetes Node Authorizer.
+When generating kubeconfig for Kubelets, a client certificate matching the Kubelet's node hostname must be used (`node-01 node-02 node-03` in the example below). This will ensure Kubelets are properly authorized by the Kubernetes Node Authorizer.
 
 Create a kubeconfig file for each worker:
 
 ```bash
 {{< highlight bash >}}
 
-for instance in worker-1 worker-2 worker-3; do
+for instance in node-01 node-02 node-03; do
   kubectl config set-cluster containerum \
     --certificate-authority=ca.crt \
     --embed-certs=true \
@@ -202,7 +202,7 @@ Copy the appropriate kubeconfig files for `kubelet` and `kube-proxy` to each wor
 ```bash
 {{< highlight bash >}}
 
-for instance in worker-1 worker-2 worker-3; do
+for instance in node-01 node-02 node-03; do
   scp ${instance}.kubeconfig kube-proxy.kubeconfig ${instance}:~/
 done
 
@@ -216,58 +216,6 @@ Copy the appropriate kubeconfig files for `kube-controller-manager` and `kube-sc
 
 for instance in master-1 master-2 master-3; do
   scp admin.kubeconfig kube-controller-manager.kubeconfig kube-scheduler.kubeconfig ${instance}:~/
-done
-
-{{< / highlight >}}
-```
-
-## Create a configuration file for data and key encryption
-
-Kubernetes stores data about cluster state, application configuration and secrets. Kubernetes supports encrypting all cluster data.
-
-### Encryption key
-
-Create an encryption key:
-
-```bash
-{{< highlight bash >}}
-ENCRYPTION_KEY=$(head -c 32 /dev/urandom | base64)
-{{< / highlight >}}
-```
-
-### Configuration file
-
->**Warning**: This part is not required. Secrets encryption is an experimental feature in Kubernetes. You may use it only at your own risk.
-
-Create `encryption-config.yaml` as follows:
-
-```yaml
-{{< highlight yaml >}}
-
-cat > encryption-config.yaml <<EOF
-kind: EncryptionConfig
-apiVersion: v1
-resources:
-  - resources:
-      - secrets
-    providers:
-      - aescbc:
-          keys:
-            - name: key1
-              secret: ${ENCRYPTION_KEY}
-      - identity: {}
-EOF
-
-{{< / highlight >}}
-```
-
-Copy `encryption-config.yaml` to each master:
-
-```bash
-{{< highlight bash >}}
-
-for instance in master-1 master-2 master-3; do
-  scp encryption-config.yaml ${instance}:~/
 done
 
 {{< / highlight >}}

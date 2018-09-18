@@ -37,6 +37,18 @@ EOF
 sysctl --system
 ```
 
+If you get error message like this:
+```
+sysctl: cannot stat /proc/sys/net/bridge/bridge-nf-call-ip6tables: No such file or directory
+sysctl: cannot stat /proc/sys/net/bridge/bridge-nf-call-iptables: No such file or directory
+```
+You need to load kernel module br_netfilter:
+```
+modprobe br_netfilter
+cat <<EOF >  /etc/modules-load.d/br_netfilter.conf
+br_netfilter
+EOF
+```
 
 After kubeadm has been initialized, run:
 

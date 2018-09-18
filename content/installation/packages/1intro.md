@@ -1,6 +1,6 @@
 ---
 title: Kubernetes Variables
-linktitle: Variables
+linktitle: Intro
 description: Description of variables that will be used throughout the installation and network configuration info.
 
 categories: []
@@ -16,7 +16,7 @@ draft: false
 ---
 
 # Before you start
-Before you start bootstrapping a cluster with Containerum Kubernetes Package be sure to read through the variables that will be used throughout this installation guide. Also don't forget to configure the network and set Containerum repo in advance as described below.
+Before you start bootstrapping a cluster with Containerum Distribution of Kubernetes be sure to read through the variables that will be used throughout this installation guide. Also don't forget to configure the network and set Containerum repository in advance as described below.
 
 ## Variables  
 ### IP addresses
@@ -58,7 +58,6 @@ DEFROUTE=yes
 DEVICE=eth0
 GATEWAY=192.168.0.1
 IPADDR=192.168.0.2
-MTU=1500
 NETMASK=255.255.255.0
 ONBOOT=yes
 TYPE=Ethernet
@@ -70,9 +69,8 @@ USERCTL=no
 ```
 BOOTPROTO=none
 DEVICE=eth1
-IPADDR=10.0.10.1
-MTU=1500
-NETMASK=255.255.255.0
+IPADDR=192.0.2.1
+NETMASK=255.255.255.252
 ONBOOT=yes
 TYPE=Ethernet
 USERCTL=no
@@ -82,11 +80,11 @@ USERCTL=no
 
 ### Repository definition
 
-Put this in /etc/yum.repos.d/exonlab.repo:
+Add Containerum repository to yum. Put this in /etc/yum.repos.d/exonlab.repo:
 ```
-[exonlab-kubernetes110-testing]
+[exonlab-kubernetes1.11-testing]
 name=Exon lab kubernetes repo for CentOS
-baseurl=http://repo.containerum.io/centos/7/x86_64/
+baseurl=http://repo.containerum.io/centos/7/kubernetes-1_11-pkg/x86_64/
 skip_if_unavailable=False
 gpgcheck=1
 repo_gpgcheck=1
@@ -106,4 +104,4 @@ sudo chown root:root /etc/pki/rpm-gpg/RPM-GPG-KEY-ExonLab
 
 Key fingerprint: `2ED4 CBD2 309F 2C75 1642  CA7B 4E39 9E04 3CDA 4338`
 
-Now you can proceed to [configuring certificates.](/installation/packages/2certificates)
+Now you can proceed to [generating certificates.](/installation/packages/2certificates)

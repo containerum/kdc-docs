@@ -15,7 +15,7 @@ draft: true
 ---
 
 # Kubernetes prerequisites
-Before installing Kubernetes make sure you have the following components:
+Before installing Containerum Distribution of Kubernetes make sure you have the following components installed:
 
 - CentOS 7
 - Docker-1.13
