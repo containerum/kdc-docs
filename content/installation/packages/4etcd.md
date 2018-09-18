@@ -1,6 +1,6 @@
 ---
 title: Kubernetes ETCD Installation
-linktitle: Etcd
+linktitle: Install etcd
 description: Installing and configuring the etcd cluster.
 
 categories: []
@@ -20,7 +20,7 @@ This section covers how to launch a 3-node etcd cluster, configure high availabi
 ## Bootstrapping an etcd Cluster Member
 > **Run each command from this section on each instance that you would like to use as an etcd node**.
 
-As described in the [requirements](/kubernetes/prerequirements/) section, you can install etcd on either master node instances or separate node instances.
+As described in the [requirements](/installation/prerequirements/) section, you can install etcd on either master node instances or separate node instances.
 
 Login to each instance via ssh.
 
@@ -80,14 +80,14 @@ ETCD_PEER_TRUSTED_CA_FILE="/etc/ssl/etcd/ca.crt"
 EOF
 ```
 
-> **Note**: In the case of one etcd node these variables are not required:
-> - `ETCD_LISTEN_PEER_URLS`
-> - `ETCD_INITIAL_ADVERTISE_PEER_URLS`
-> - `ETCD_INITIAL_CLUSTER`
-> - `ETCD_PEER_CERT_FILE`
-> - `ETCD_PEER_KEY_FILE`
-> - `ETCD_PEER_CLIENT_CERT_AUTH`
-> - `ETCD_PEER_TRUSTED_CA_FILE`
+> **Note**: In the case of one etcd node these variables are not required:  
+> - `ETCD_LISTEN_PEER_URLS`  
+> - `ETCD_INITIAL_ADVERTISE_PEER_URLS`  
+> - `ETCD_INITIAL_CLUSTER`  
+> - `ETCD_PEER_CERT_FILE`  
+> - `ETCD_PEER_KEY_FILE`  
+> - `ETCD_PEER_CLIENT_CERT_AUTH`  
+> - `ETCD_PEER_TRUSTED_CA_FILE`  
 
 ### Launch the etcd server
 

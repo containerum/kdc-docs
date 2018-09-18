@@ -1,7 +1,7 @@
 ---
 title: Kubernetes Certificates
-linktitle: Certificates
-description: Generation of certificated for etcd, kube-apiserver, kubelet, etc.
+linktitle: Generate certificates
+description: Generation of certificates for etcd, kube-apiserver, kubelet, etc.
 
 categories: []
 keywords: []
@@ -16,11 +16,11 @@ draft: false
 
 # Certs preparation and generation
 
-Here described how to generate kubernetes certificate bundle with Containerum kube-cert-generator.
+This section describes how to generate Kubernetes certificates with Containerum kube-cert-generator.
 
-> **Note**: All steps in this article can be performed on your host machine or on any other machine with the ssh access to all your nodes.
+> **Note**: All steps in this article can be performed on your host machine or on any other machine with the ssh access to all of your nodes.
 
-## Option 1: generate certs with Containerum cert generator
+## Generate certificates with Containerum kube-cert-generator
 
 Download and build the script that helps generate and maintain certificate infrastructure sufficient to run a Kubernetes cluster:
 ```bash
@@ -102,31 +102,23 @@ validity_period = "24h"
 key_size = 2048
 ```
 
-
-
 Arguments:
 
 `init-ca` - Initialize a CA.  
 `gen-csr` - Prepare configuration for generating a CSRs.  
 `sign file.crt` - Use CA to sign a CSR in file.csr. Result in file.crt.
 
-The script does not remove or overwrite any files with non-zero length - it
-completes the file structure to its full state by generating missing files from
-the files they are dependent on.
+The script does not remove or overwrite any files with non-zero length - it completes the file structure to its full state by generating missing files from the files they are dependent on.
 
-For example, if you put files `admin.key` and `etcd1.key` into an empty directory, and
-call this script from there, it will use `.key` files provided by you for
-generation of the CA certificate and `admin.csr` (and consecutively `admin.crt`).
-If you want to re-issue a certificate, just remove its `.cey`, `.csr` and `.crt`
-file and rerun the script.
+For example, if you put files `admin.key` and `etcd1.key` into an empty directory, and call this script from there, it will use `.key` files provided by you for generation of the CA certificate and `admin.csr` (and consecutively `admin.crt`). If you want to re-issue a certificate, just remove its `.cey`, `.csr` and `.crt` files and rerun the script.
 
-The `init-ca` subcommand create new cartificate authority from `[ca]` template in `cofnig.toml` file.
-The `gen-csr` subcommand generate certificate signing requests for all services, using IP addresses and DNS names from the `config.toml` file.
-The `sign` subcommand signing CSR with CA key.
+The `init-ca` subcommand creates a new certificate authority from the `[ca]` template in `config.toml` file.
+The `gen-csr` subcommand generates a certificate signing requests for all services, using IP addresses and DNS names from the `config.toml` file.
+The `sign` subcommand signs CSR with CA key.
 
 ### Usage examples
 
-For generate valid certificates range create valid config, like described below and run following commands:
+To generate a valid certificates range create a valid config like the one described below and run following commands:
 
 ```
 {{< highlight bash >}}
@@ -138,6 +130,6 @@ cp ca/root/keys/root.key cert/ca.key
 {{< / highlight >}}
 ```
 
-Done! You generated full certificate bundle for kubernetes infrastructure.
+Done! You have generated a full certificate bundle for Kubernetes infrastructure.
 
 Now you can proceed to creating [kubeconfig files](/installation/packages/3kubernetes-configuration-files).

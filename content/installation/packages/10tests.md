@@ -167,4 +167,4 @@ ETag: "5acb8e45-264"
 Accept-Ranges: bytes
 ```
 
-You've just bootstrapped a production-ready Kubernetes cluster with Containerum Kubernetes Package. Now you can install [Containerum platform](https://docs.containerum.com/installation/) to manage containerized applications running in Kubernetes.
+You have bootstrapped and tested a production-ready Kubernetes cluster with Containerum Kubernetes Package. Now you can install [Containerum platform](https://docs.containerum.com/installation/) to manage containerized applications running in Kubernetes.

@@ -22,7 +22,7 @@ This section contains hardware and environment requirements to cluster nodes.
 
 - You can use virtual or physical machines.
 - While you can build a cluster with 1 machine, in order to run all the examples and tests you will need at least **3 nodes**.
-- Nodes need to run some version of Linux with the x86_64 architecture. It may be possible to run Kubernetes on other OS and architectures, but this guide will use **CentOS**.
+- Nodes need to run some version of Linux with the x86_64 architecture. It may be possible to run Kubernetes on other OS and architectures, but **this guide will use CentOS 7**.
 - Apiserver and etcd work well on a machine with **2 cores and 2GB RAM** for small and medium cluster. Larger or more active clusters may require more cores and RAM.
 - Other nodes can have any reasonable amount of resources and are not required to have the same configuration.
 - Each node must have a unique hostname.
@@ -193,4 +193,4 @@ $ sudo systemctl start etcd
 Done!
 -->
 
-Now you can proceed to Kubernetes installation [using kubeadm](/installation/install_kubeadm/) or [from packages](/installation/packages/).
+Now you can proceed to Kubernetes installation [from packages](/installation/packages/).
