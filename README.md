@@ -1,12 +1,12 @@
-# Documentation for Containerum Distribution of Kubernetes
+# Documentation for Kubernetes Distribution by Containerum
 
 [![Build Status](https://travis-ci.org/containerum/cdk-docs.svg?branch=master)](https://travis-ci.org/containerum/cdk-docs)
 
 [Stable documentation](https://docs.cdk.containerum.com)  
 [Staging documentation](https://cdk-docs.hub.containerum.io)
 
-Cdk-docs is a documentation project for [Containerum Distribution of Kubernetes (CDK)](https://containerum.com/kubernetes/). It contains guides on installing CDK, manuals and release notes.
-CDK Docs can be launched locally with YARN and Hugo. We strive to make docs as clear and substantial as possible, so we welcome contributions and advice.
+Cdk-docs is a documentation project for [Kubernetes Distribution by Containerum (KDC)](https://containerum.com/kubernetes/). It contains guides on installing KDC, manuals and release notes.
+DKC Docs can be launched locally with YARN and Hugo. We strive to make docs as clear and substantial as possible, so we welcome contributions and advice.
 
 
 ## Requirements
