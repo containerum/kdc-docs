@@ -6,7 +6,7 @@
 [Staging documentation](https://cdk-docs.hub.containerum.io)
 
 Cdk-docs is a documentation project for [Kubernetes Distribution by Containerum (KDC)](https://containerum.com/kubernetes/). It contains guides on installing KDC, manuals and release notes.
-DKC Docs can be launched locally with YARN and Hugo. We strive to make docs as clear and substantial as possible, so we welcome contributions and advice.
+KDC Docs can be launched locally with YARN and Hugo. We strive to make docs as clear and substantial as possible, so we welcome contributions and advice.
 
 
 ## Requirements
