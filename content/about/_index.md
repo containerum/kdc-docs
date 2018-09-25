@@ -1,7 +1,7 @@
 ---
-title: Docs overview - CDK
+title: Docs overview - KDC
 linktitle: Docs overview
-description: Containerum Distribution of Kubernetes documentation describes how to setup and use a Kubernetes cluster with CDK.
+description: Kubernetes Distribution by Containerum documentation describes how to setup and use a Kubernetes cluster with KDC.
 
 
 categories: []
@@ -21,12 +21,12 @@ Containerum documentation walks you through all aspects of Containerum installat
 
 **[About](/about)** contains Documentation overview.
 
-**[Installation](/installation/prerequirements)** contains describes how to bootstrap Containerum Distribution of Kubernetes (CDK) from binaries.
+**[Installation](/installation/prerequirements)** contains describes how to bootstrap Kubernetes Distribution by Containerum (KDC) from binaries.
 
-**[Plugins](/plugins/)** section describes how to install and configure plugins that work best with CDK.
+**[Plugins](/plugins/)** section describes how to install and configure plugins that work best with KDC.
 
-**[Release notes](/release-notes/)** describe what's new in Containerum Distribution of Kubernetes.
+**[Release notes](/release-notes/)** describe what's new in Kubernetes Distribution by Containerum.
 
 You might also want to check out the **[FAQ](/faq)**.
 
-**[Contribute](/contribute/)** section contains instructions for contributing to CDK docs.
+**[Contribute](/contribute/)** section contains instructions for contributing to KDC docs.
