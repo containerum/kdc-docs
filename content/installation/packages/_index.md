@@ -3,6 +3,7 @@ title: KDC Installation
 linktitle: Overview
 description: Bootstrapping Kubernetes Distribution by Containerum from packages.
 
+
 categories: [top]
 keywords: []
 

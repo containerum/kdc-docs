@@ -5,6 +5,7 @@
 [Stable documentation](https://docs.cdk.containerum.com)  
 [Staging documentation](http://dev.docs.kdc.containerum.com)
 
+
 KDC-docs is a documentation project for [Kubernetes Distribution by Containerum (KDC)](https://containerum.com/kubernetes/). It contains guides on installing KDC, manuals and release notes.
 KDC Docs can be launched locally with YARN and Hugo. We strive to make docs as clear and substantial as possible, so we welcome contributions and advice.
 

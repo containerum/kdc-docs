@@ -16,7 +16,9 @@ draft: false
 ---
 
 # Before you start
+
 Before you start bootstrapping a cluster with Kubernetes Distribution by Containerum be sure to read through the variables that will be used throughout this installation guide. Also don't forget to configure the network and set Containerum repository in advance as described below.
+
 
 ## Variables  
 ### IP addresses
