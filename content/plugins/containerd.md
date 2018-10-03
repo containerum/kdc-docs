@@ -17,7 +17,7 @@ draft: false
 # How to install containerd
 Containerd is one of container runtimes used in Kubernetes. Container runtime is software responsible for launching containers.
 
-It is recommended to use CDK with containerd v1.1.3, but versions 1.0.\*, 1.1.\* are also supported.
+It is recommended to use KDC with containerd v1.1.3, but versions 1.0.\*, 1.1.\* are also supported.
 
 ## Description
 Containerd is used in the same way as Docker. Containerd as a container runtime in Kubernetes allows for the highest performance when launching containers due to the lack of excessive interfaces between Kubelet and the system.

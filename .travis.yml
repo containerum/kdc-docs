@@ -2,11 +2,10 @@ sudo: required
 
 env:
   global:
-  - CHKIT_VERSION=v3.4.0-alpha
-  - IMAGE_NAME=containerum/cdk-docs
-  - DEPLOY=cdk-documentation
-  - NAMESPACE=cdk
-  - CONTAINER=docs
+  - CHKIT_VERSION=v3.5.1
+  - IMAGE_NAME=containerum/kdc-docs
+  - CONTAINERUM_API="https://panel.api.containerum.io"
+  - NAMESPACE=containerum-kdc-docs
 
 services:
   - docker
@@ -16,8 +15,8 @@ install:
   - tar -zxf chkit_linux_amd64_${CHKIT_VERSION}.tar.gz && sudo mv chkit /bin/chkit
 
 script:
-  - chkit get api
-  - chkit login -u ${LOGIN} -p ${PASSWORD} -n -
+  - chkit set api ${CONTAINERUM_API}
+  - chkit login -u ${CONTAINERUM_LOGIN} -p ${CONTAINERUM_PASSWORD} -n -
   - docker build -t "$IMAGE_NAME" --build-arg DOCS_COMMIT="${TRAVIS_COMMIT::8}" .
   - echo "Commit ${TRAVIS_COMMIT::8}"
 
@@ -31,12 +30,23 @@ before_deploy:
 
 deploy:
   - provider: script
+    script: docker push "${IMAGE_NAME}:dev" && docker push "${IMAGE_NAME}:${TRAVIS_COMMIT::8}"
+    skip_cleanup: true
+    on:
+      branch: develop
+  - provider: script
+    script: chkit set image --deployment docs-dev --image "${IMAGE_NAME}:${TRAVIS_COMMIT::8}" --force -n ${NAMESPACE}
+    skip_cleanup: true
+    on:
+      branch: develop
+
+  - provider: script
     script: docker push "${IMAGE_NAME}:release" && docker push "${IMAGE_NAME}:${TRAVIS_COMMIT::8}"
     skip_cleanup: true
     on:
       branch: master
   - provider: script
-    script: chkit set default-namespace -n ${NAMESPACE} && chkit set image --deployment ${DEPLOY} --container ${CONTAINER} --image "${IMAGE_NAME}:${TRAVIS_COMMIT::8}" --force
+    script: chkit set image --deployment docs-production --image "${IMAGE_NAME}:${TRAVIS_COMMIT::8}" --force -n ${NAMESPACE}
     skip_cleanup: true
     on:
       branch: master

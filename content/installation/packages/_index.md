@@ -1,7 +1,8 @@
 ---
-title: CDK Installation
+title: KDC Installation
 linktitle: Overview
-description: Bootstrapping Containerum Distribution of Kubernetes from packages.
+description: Bootstrapping Kubernetes Distribution by Containerum from packages.
+
 
 categories: [top]
 keywords: []
@@ -17,7 +18,7 @@ draft: false
 
 # Kubernetes installation overview
 
-This section covers installation of a production-ready Kubernetes cluster from packages with Containerum Distribution of Kubernetes. To set up a high availability Kubernetes cluster follow the instructions in this section step-by-step.
+This section covers installation of a production-ready Kubernetes cluster from packages with Kubernetes Distribution by Containerum. To set up a high availability Kubernetes cluster follow the instructions in this section step-by-step.
 
 - Check out the variables  
 Read through the list of the variables that will be used throughout the installation process.

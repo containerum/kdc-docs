@@ -53,7 +53,7 @@ postal_code = []
 
 [master_node] # certificate for kubernetes control plane
 alias = "master" # HZ
-addresses = ["10.96.0.1", "192.0.2.1", "192.168.0.1", "192.168.0.2", "192.168.0.3"] # SAN for apiserver. Must contain all apiserver private addresses, public address (or public load balancer addr.) and cluster ip (10.96.0.1 here).
+addresses = ["10.96.0.1", "192.0.2.1", "192.168.0.1", "192.168.0.2", "192.168.0.3"] # SAN for apiserver. Must contain all apiserver private and public addresses (or public load balancer addr.) and cluster ip (10.96.0.1 here).
 
 [[worker_node]] # certificates for worker node
 alias = "node-01" # must be same as hostname of node.
@@ -124,9 +124,9 @@ To generate a valid certificates range create a valid config like the one descri
 {{< highlight bash >}}
 ./generator init-ca
 ./generator gen-csr
-./generator sign certs/*.csr
-cp ca/root/certs/root.crt cert/ca.crt
-cp ca/root/keys/root.key cert/ca.key
+./generator sign cert/*.csr
+cp certs/root/certs/root.crt cert/ca.crt
+cp certs/root/keys/root.key cert/ca.key
 {{< / highlight >}}
 ```
 

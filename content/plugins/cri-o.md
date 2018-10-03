@@ -17,7 +17,7 @@ draft: false
 # How to install cri-o
 Cri-o is one of container runtimes used in Kubernetes. Container runtime is software responsible for launching containers.
 
-It is recommended to use CDK 1.11.2 with cri-o 1.11.2.
+It is recommended to use KDC 1.11.2 with cri-o 1.11.2.
 
 ## Description
 
