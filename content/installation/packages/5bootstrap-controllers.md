@@ -107,8 +107,8 @@ Run:
 ```bash
 {{< highlight bash >}}
 
-sudo systemctl enable kube-apiserver kube-controller-manager kube-scheduler
-sudo systemctl start kube-apiserver kube-controller-manager kube-scheduler
+sudo systemctl enable kube-apiserver kube-controller-manager kube-scheduler kubernetes.target
+sudo systemctl start kube-apiserver kube-controller-manager kube-scheduler kubernetes.target
 
 {{< / highlight >}}
 ```
@@ -210,7 +210,7 @@ EOF
 Make an HTTP request to print the Kubernetes version:
 
 ```bash
-curl --cacert ca.crt https://${KUBERNETES_PUBLIC_IP}:6443/version
+curl -k --cacert ca.crt https://${KUBERNETES_PUBLIC_IP}:6443/version
 ```
 
 Output:

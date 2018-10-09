@@ -30,6 +30,8 @@ Install the OS dependencies:
 sudo yum update
 sudo yum -y install socat conntrack ipset
 
+swapoff -a
+
 {{< / highlight >}}
 ```
 
@@ -67,7 +69,7 @@ Kubernetes supports various container runtimes. By default this installation use
 ```bash
 {{< highlight bash >}}
 
-yum install docker
+yum install docker -y
 sed -i 's/native.cgroupdriver=systemd/native.cgroupdriver=cgroupfs/' /usr/lib/systemd/system/docker.service
 systemctl daemon-reload
 systemctl enable docker && systemctl start docker
@@ -93,7 +95,7 @@ sudo cp $HOSTNAME.kubeconfig /etc/kubernetes/kubelet.kubeconfig
 ```bash
 {{< highlight bash >}}
 
-sudo mv kube-proxy.kubeconfig /etc/kubernetes
+sudo cp kube-proxy.kubeconfig /etc/kubernetes
 
 {{< / highlight >}}
 ```
@@ -104,8 +106,8 @@ sudo mv kube-proxy.kubeconfig /etc/kubernetes
 {{< highlight bash >}}
 
 sudo systemctl daemon-reload
-sudo systemctl enable kubernetes.target
-sudo systemctl start kubernetes.target
+sudo systemctl enable kubernetes.target kubelet kube-proxy
+sudo systemctl start kubernetes.target kubelet kube-proxy
 
 {{< / highlight >}}
 ```

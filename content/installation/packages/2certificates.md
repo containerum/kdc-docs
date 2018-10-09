@@ -127,9 +127,9 @@ To generate a valid certificates range create a valid config like the one descri
 {{< highlight bash >}}
 ./generator init-ca
 ./generator gen-csr
-./generator sign certs/*.csr
-cp ca/root/certs/root.crt cert/ca.crt
-cp ca/root/keys/root.key cert/ca.key
+./generator sign cert/*.csr
+cp cert/root/certs/root.crt cert/ca.crt
+cp cert/root/keys/root.key cert/ca.key
 {{< / highlight >}}
 ```
 
