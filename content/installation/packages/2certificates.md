@@ -128,8 +128,8 @@ To generate a valid certificates range create a valid config like the one descri
 ./generator init-ca
 ./generator gen-csr
 ./generator sign cert/*.csr
-cp cert/root/certs/root.crt cert/ca.crt
-cp cert/root/keys/root.key cert/ca.key
+cp certs/root/certs/root.crt cert/ca.crt
+cp certs/root/keys/root.key cert/ca.key
 {{< / highlight >}}
 ```
 

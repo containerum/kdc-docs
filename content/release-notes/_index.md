@@ -17,4 +17,4 @@ draft: false
 
 # Release Notes Overview
 
-This section contains release notes for Containerum Distribution of Kubernetes (CDK).
+This section contains release notes for Kubernetes Distribution by Containerum (KDC).
