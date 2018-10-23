@@ -47,21 +47,6 @@ sudo yum install kubernetes-node-meta
 {{< / highlight >}}
 ```
 
-Create installation directories:
-
-```bash
-{{< highlight bash >}}
-
-sudo mkdir -p \
-  /var/lib/kubelet \
-  /var/lib/kube-proxy \
-  /var/lib/kubernetes \
-  /var/run/kubernetes \
-  /etc/kubernetes/pki
-
-{{< / highlight >}}
-```
-
 ### Install docker
 
 Kubernetes supports various container runtimes. By default this installation uses docker. To install and configure alternative runtimes consult the [plugins](/plugins) section.
@@ -70,8 +55,6 @@ Kubernetes supports various container runtimes. By default this installation use
 {{< highlight bash >}}
 
 yum install docker -y
-sed -i 's/native.cgroupdriver=systemd/native.cgroupdriver=cgroupfs/' /usr/lib/systemd/system/docker.service
-systemctl daemon-reload
 systemctl enable docker && systemctl start docker
 
 {{< / highlight >}}
