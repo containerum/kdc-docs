@@ -1,8 +1,8 @@
 # Documentation for Kubernetes Distribution by Containerum
 
-[![Build Status](https://travis-ci.org/containerum/cdk-docs.svg?branch=master)](https://travis-ci.org/containerum/kdc-docs)
+[![Build Status](https://travis-ci.org/containerum/kdc-docs.svg?branch=master)](https://travis-ci.org/containerum/kdc-docs)
 
-[Stable documentation](https://docs.cdk.containerum.com)  
+[Stable documentation](https://docs.kdc.containerum.com)  
 [Staging documentation](http://dev.docs.kdc.containerum.com)
 
 
