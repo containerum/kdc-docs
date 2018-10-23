@@ -32,6 +32,8 @@ To install etcd from the official repo run:
 
 sudo yum install etcd
 
+mkdir -p /etc/ssl/etcd/
+
 {{< / highlight >}}
 ```
 
@@ -41,8 +43,7 @@ Run:
 ```bash
 {{< highlight bash >}}
 
-sudo mkdir /etc/ssl/etcd/
-sudo cp ca.crt etcd.crt etcd.key /etc/ssl/etcd/
+sudo cp ca.crt etcd*.crt etcd*.key /etc/ssl/etcd/
 sudo chown etcd:etcd /etc/ssl/etcd/*.key /etc/ssl/etcd/*.crt
 sudo chmod 640 /etc/ssl/etcd/*.key
 
@@ -59,7 +60,7 @@ Each etcd node must have a unique name within the cluster. Set the etcd node nam
 ETCD_NAME=$(hostname -s)
 ```
 
-Create etcd config file in `/etc/etcd/etcd.conf`:
+Edit the etcd config file in `/etc/etcd/etcd.conf`. You should uncomment the lines below and replace their value with the variables retrieved above:
 ```
 cat <<EOF > /etc/etcd/etcd.conf
 ETCD_LISTEN_PEER_URLS="https://${INTERNAL_IP}:2380"

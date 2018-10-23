@@ -68,7 +68,7 @@ The node internal IP address will be used to manifest the API server as a cluste
 ```
 ADVERTISE_ADDRESS=192.0.2.1
 BIND_ADDRESS=0.0.0.0
-ETCD_SERVERS=ttps://${ETCD_NODE_1_IP}:2379,https://${ETCD_NODE_2_IP}:2379,https://${ETCD_NODE_3_IP}:2379
+ETCD_SERVERS=https://${ETCD_NODE_1_IP}:2379,https://${ETCD_NODE_2_IP}:2379,https://${ETCD_NODE_3_IP}:2379
 ```
 
 ### Configure Kubernetes Controller Manager
