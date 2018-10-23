@@ -197,6 +197,13 @@ kubectl config use-context default --kubeconfig=admin.kubeconfig
 
 ## Distribute configuration files
 
+Distribute certificates across the nodes:
+```bash
+for instance in node-01 node-02 node-03; do
+  scp ca.crt ${instance}.crt ${instance}.key ${instance}:~/
+done 
+```
+
 Copy the appropriate kubeconfig files for `kubelet` and `kube-proxy` to each worker node:
 
 ```bash

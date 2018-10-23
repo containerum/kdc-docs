@@ -16,7 +16,9 @@ draft: false
 ---
 
 # Before you start
-Before you start bootstrapping a cluster with Containerum Distribution of Kubernetes be sure to read through the variables that will be used throughout this installation guide. Also don't forget to configure the network and set Containerum repository in advance as described below.
+
+Before you start bootstrapping a cluster with Kubernetes Distribution by Containerum be sure to read through the variables that will be used throughout this installation guide. Also don't forget to configure the network and set Containerum repository in advance as described below.
+
 
 ## Variables  
 ### IP addresses
@@ -25,7 +27,7 @@ Before you start bootstrapping a cluster with Containerum Distribution of Kubern
 <!-- - `PUBLIC_IP` is equal to `KUBERNETES_PUBLIC_IP` -->
 - `EXTERNAL_IP` is an IP address of an instance in external network
 - `INTERNAL_IP` is an IP address of instance in internal network
-- `MASTER_NODES_IP` is a sequence of all IP addresses of master nodes. In the case of only one node it is equal to the master node's `EXTERNAL_IP` value
+<!-- - `MASTER_NODES_IP` is a sequence of all IP addresses of master nodes. In the case of only one node it is equal to the master node's `EXTERNAL_IP` value -->
 - `ETCD_NODE_IP` is an IP address of the etcd node. In case of multiple etcd nodes they can be declared as `ETCD_NODE_1_IP`, `ETCD_NODE_2_IP`, etc.
 - `POD_CIDR` is the range of IP addresses for pods
 
@@ -76,30 +78,57 @@ TYPE=Ethernet
 USERCTL=no
 ```
 
+## Turn off SELinux
+
+Disabling SELinux by running setenforce 0 or permanently disabling is required to allow containers to access the host filesystem, which is required by pod networks for example. You have to do this until SELinux support is improved in the kubelet.
+
+Run this command to permanently disable SELinux:
+
+```
+setenforce 0
+sed -i s/SELINUX=enforcing/SELINUX=disabled/g /etc/selinux/config
+```
+
+## Configure nf call
+
+Some users on RHEL/CentOS 7 have reported issues with traffic being routed incorrectly due to iptables being bypassed. You should ensure net.bridge.bridge-nf-call-iptables is set to 1 in your sysctl config, e.g.
+
+Run this command to enable nf-call:
+
+```
+{{< highlight bash >}}
+cat <<EOF >  /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+sysctl --system
+{{< / highlight >}}
+```
+
 ## Containerum RPM repository
 
 ### Repository definition
 
-Add Containerum repository to yum. Put this in /etc/yum.repos.d/exonlab.repo:
+Add Containerum repository to yum. To put add our repository to yum run this command:
 ```
+{{< highlight bash >}}
+cat <<EOF > /etc/yum.repos.d/exon.repo
 [exonlab-kubernetes1.11-testing]
 name=Exon lab kubernetes repo for CentOS
 baseurl=http://repo.containerum.io/centos/7/kubernetes-1_11-pkg/x86_64/
 skip_if_unavailable=False
 gpgcheck=1
 repo_gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ExonLab
+gpgkey=https://repo.containerum.io/RPM-GPG-KEY-ExonLab
 enabled=1
 enabled_metadata=1
-
+EOF
+{{< / highlight >}}
 ```
 
-### GPG package signing key
-
+And update repositories:
 ```
-curl -O http://repo.containerum.io/RPM-GPG-KEY-ExonLab
-sudo mv RPM-GPG-KEY-ExonLab /etc/pki/rpm-gpg/
-sudo chown root:root /etc/pki/rpm-gpg/RPM-GPG-KEY-ExonLab
+yum update -y
 ```
 
 Key fingerprint: `2ED4 CBD2 309F 2C75 1642  CA7B 4E39 9E04 3CDA 4338`
