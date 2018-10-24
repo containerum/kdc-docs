@@ -19,7 +19,7 @@ draft: false
 Calico is an overlay network for containers. Download the Calico networking manifest:
 
 ```bash
-curl -O https://raw.githubusercontent.com/containerum/kdc-docs/master/content/files/calico.yaml
+curl -O https://raw.githubusercontent.com/containerum/kdc-docs/master/content/files/calico/calico.yaml
 ```
 
 Now it's time to configure calico!
@@ -60,7 +60,7 @@ If we have everything done right, we need to proceed with BGP configuration in C
 First of all, we need to get calicoctl utility, to do this you can add pod for calicoctl:
 
 ```bash
-curl -O https://raw.githubusercontent.com/containerum/kdc-docs/master/content/files/calicoctl.yaml
+curl -O https://raw.githubusercontent.com/containerum/kdc-docs/master/content/files/calico/calicoctl.yaml
 ```
 
 > Run commands with this syntax:
@@ -113,7 +113,7 @@ protocol direct {
 
 # apply all routes to pod subnet
 filter main_filter {
-      if net ~ 192.16.0.0/16 then accept; # here your PODs CIDR
+      if net ~ 192.168.0.0/16 then accept; # here your PODs CIDR
       else reject;
 }
 
