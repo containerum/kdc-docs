@@ -19,7 +19,7 @@ draft: false
 Calico is an overlay network for containers. Download the Calico networking manifest:
 
 ```bash
-curl -O https://docs.projectcalico.org/v3.2/getting-started/kubernetes/installation/hosted/calico.yaml
+curl -O https://raw.githubusercontent.com/containerum/kdc-docs/master/content/files/calico.yaml
 ```
 
 Now it's time to configure calico!
@@ -59,8 +59,8 @@ If we have everything done right, we need to proceed with BGP configuration in C
 
 First of all, we need to get calicoctl utility, to do this you can add pod for calicoctl:
 
-```
-kubectl apply -f https://docs.projectcalico.org/v2.3/getting-started/kubernetes/installation/hosted/calicoctl.yaml
+```bash
+curl -O https://raw.githubusercontent.com/containerum/kdc-docs/master/content/files/calicoctl.yaml
 ```
 
 > Run commands with this syntax:
@@ -79,6 +79,79 @@ spec:
   nodeToNodeMeshEnabled: true
   asNumber: 63400
 EOF;
+```
+
+For access to pods from master you should install bird on your master:
+```bash
+yum install -y bird
+```
+Next configure bird like this:
+```ini
+log syslog { trace, info, remote, warning, error, auth, fatal, bug };
+log stderr all;
+
+router id 172.16.0.1; # master internal ip
+
+# add all received routes to kernel routing table
+protocol kernel {
+  persist; # save routes when bird goes down
+  scan time 2;
+  export all; # export all incoming routes in to kernel
+  graceful restart;
+}
+
+# scan interfaces
+protocol device {
+  debug { states };
+  scan time 2;
+}
+
+protocol direct {
+  debug { states };
+  interface "ib0"; # master internal ip
+}
+
+# apply all routes to pod subnet
+filter main_filter {
+      if net ~ 192.16.0.0/16 then accept; # here your PODs CIDR
+      else reject;
+}
+
+# bgp rules template
+template bgp bgp_template {
+  debug { states };
+  description "Connection to BGP peer";
+  local as 63400; # Same as calico hosts AS
+  multihop; # allow connect to neighbor though router
+  gateway recursive; # allow routes trough router
+  import filter main_filter; # apply filter
+  next hop self; # adtertise self ip as next hop
+  source address 172.16.0.1; # Master internal ip
+  add paths on; # allow multiple routes to same subnet
+  graceful restart;
+}
+
+#Here list of BGP peers (kubernetes nodes)
+protocol bgp node-01 from bgp_template {
+  neighbor 172.16.0.11 as 63400;
+}
+
+protocol bgp node-02 from bgp_template {
+  neighbor 172.16.0.12 as 63400;
+}
+```
+
+Also you must add master nodes to bgp pers in calico:
+```bash
+cat << EOF | calicoctl create -f -
+apiVersion: projectcalico.org/v3
+kind: BGPPeer
+metadata:
+  name: bgppeer-m1
+spec:
+  peerIP: 172.16.0.21
+  asNumber: 63400
+EOF
 ```
 
 Done!

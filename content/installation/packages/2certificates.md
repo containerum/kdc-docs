@@ -56,23 +56,23 @@ postal_code = []
 
 [master_node] # certificate for kubernetes control plane
 alias = "master"
-addresses = ["10.96.0.1", "192.0.2.1", "192.168.0.1", "192.168.0.2", "192.168.0.3"] # SAN for apiserver. Must contain all apiserver private addresses, public address (or public load balancer addr.) and cluster ip (10.96.0.1 here).
+addresses = ["10.96.0.1", "192.0.2.1", "172.16.0.1", "172.16.0.2", "172.16.0.3"] # SAN for apiserver. Must contain all apiserver private addresses, public address (or public load balancer addr.) and cluster ip (10.96.0.1 here).
 
 [[worker_node]] # certificates for worker node
 alias = "node-01" # must be same as hostname of node.
-addresses = ["node-01", "192.168.0.11"] # internal ip addr and hostname of node
+addresses = ["node-01", "172.16.0.11"] # internal ip addr and hostname of node
 
 [[worker_node]]
 alias = "node-02"
-addresses = ["node-02", "192.168.0.12"]
+addresses = ["node-02", "172.16.0.12"]
 
 [[etcd_node]] # certificates for etcd
 alias = "etcd1" # filename of etcd cert
-addresses = ["ectd1", "192.168.1.5"] # SAN for etcd
+addresses = ["ectd1", "172.16.1.5"] # SAN for etcd
 
 [[etcd_node]]
 alias = "etcd2"
-addresses = ["ectd2", "192.168.1.6"]
+addresses = ["ectd2", "172.16.1.6"]
 
 [[extra_cert]] # you can generate some custom cert
 name = "custom_cert"
@@ -89,7 +89,7 @@ key_size = 2048
 
   [extra_cert.host] # SANs for custom cert
   alias = "etcd2"
-  addresses = ["custom.example.com", "127.0.0.1", "192.168.0.111"]
+  addresses = ["custom.example.com", "127.0.0.1", "172.16.0.111"]
 
 [ca] # certificate authority configuration
 root_dir = "cert"

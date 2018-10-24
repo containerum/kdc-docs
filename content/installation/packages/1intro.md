@@ -40,9 +40,9 @@ Before you start bootstrapping a cluster with Kubernetes Distribution by Contain
 ## Network information
 
 It is necessary to ensure that all cluster hosts can communicate by hostname. It will be sufficient to add the following entries to /etc/hosts on each node:  
-192.168.0.4 master  
-192.168.0.5 node-1  
-192.168.0.6 node-2  
+172.16.0.4 master  
+172.16.0.5 node-1  
+172.16.0.6 node-2  
 
 Set a separate hostname for each node. For the node with the master role and name set:
 ```bash
@@ -58,8 +58,8 @@ Configure the network interfaces for public and private networks:
 BOOTPROTO=none
 DEFROUTE=yes
 DEVICE=eth0
-GATEWAY=192.168.0.1
-IPADDR=192.168.0.2
+GATEWAY=172.16.0.1
+IPADDR=172.16.0.2
 NETMASK=255.255.255.0
 ONBOOT=yes
 TYPE=Ethernet
