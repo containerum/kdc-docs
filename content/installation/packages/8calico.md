@@ -90,7 +90,7 @@ Next configure bird like this:
 log syslog { trace, info, remote, warning, error, auth, fatal, bug };
 log stderr all;
 
-router id 172.16.0.21; # master internal ip
+router id 172.16.0.1; # master internal ip
 
 # add all received routes to kernel routing table
 protocol kernel {
@@ -113,7 +113,7 @@ protocol direct {
 
 # apply all routes to pod subnet
 filter main_filter {
-      if net ~ 10.2.0.0/16 then accept; # here your PODs CIDR
+      if net ~ 192.16.0.0/16 then accept; # here your PODs CIDR
       else reject;
 }
 
@@ -126,26 +126,18 @@ template bgp bgp_template {
   gateway recursive; # allow routes trough router
   import filter main_filter; # apply filter
   next hop self; # adtertise self ip as next hop
-  source address 172.16.0.21; # Master internal ip
+  source address 172.16.0.1; # Master internal ip
   add paths on; # allow multiple routes to same subnet
   graceful restart;
 }
 
 #Here list of BGP peers (kubernetes nodes)
-protocol bgp s1 from bgp_template {
-  neighbor 172.16.0.22 as 63400;
+protocol bgp node-01 from bgp_template {
+  neighbor 172.16.0.11 as 63400;
 }
 
-protocol bgp s2 from bgp_template {
-  neighbor 172.16.0.23 as 63400;
-}
-
-protocol bgp s3 from bgp_template {
-  neighbor 172.16.0.24 as 63400;
-}
-
-protocol bgp s4 from bgp_template {
-  neighbor 172.16.0.25 as 63400;
+protocol bgp node-02 from bgp_template {
+  neighbor 172.16.0.12 as 63400;
 }
 ```
 
