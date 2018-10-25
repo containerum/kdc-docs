@@ -58,6 +58,7 @@ postal_code = []
 alias = "master"
 addresses = ["10.96.0.1", "192.0.2.1", "172.16.0.1", "172.16.0.2", "172.16.0.3"] # SAN for apiserver. Must contain all apiserver private addresses, public address (or public load balancer addr.) and cluster ip (10.96.0.1 here).
 
+
 [[worker_node]] # certificates for worker node
 alias = "node-01" # must be same as hostname of node.
 addresses = ["node-01", "172.16.0.11"] # internal ip addr and hostname of node
