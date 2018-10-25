@@ -15,7 +15,7 @@ draft: false
 ---
 
 # Launch DNS Cluster Add-on
-Configure CoreDNS Cluster to enable service discovery to applications running inside the Kubernetes cluster.
+Configure CoreDNS Cluster to enable service discovery for applications running in Kubernetes cluster.
 
 ## Deploy the kube-dns cluster add-on
 
