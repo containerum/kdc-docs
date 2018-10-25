@@ -32,6 +32,8 @@ To install etcd from the official repo run:
 
 sudo yum install etcd
 
+mkdir -p /etc/ssl/etcd/
+
 {{< / highlight >}}
 ```
 
@@ -40,6 +42,7 @@ sudo yum install etcd
 Run:
 ```bash
 {{< highlight bash >}}
+
 
 sudo mkdir /etc/ssl/etcd/
 sudo cp ca.crt etcd.crt etcd.key /etc/ssl/etcd/

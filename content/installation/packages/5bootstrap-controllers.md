@@ -68,7 +68,7 @@ The node internal IP address will be used to manifest the API server as a cluste
 ```
 ADVERTISE_ADDRESS=192.0.2.1
 BIND_ADDRESS=0.0.0.0
-ETCD_SERVERS=ttps://${ETCD_NODE_1_IP}:2379,https://${ETCD_NODE_2_IP}:2379,https://${ETCD_NODE_3_IP}:2379
+ETCD_SERVERS=https://${ETCD_NODE_1_IP}:2379,https://${ETCD_NODE_2_IP}:2379,https://${ETCD_NODE_3_IP}:2379
 ```
 
 ### Configure Kubernetes Controller Manager
@@ -107,8 +107,8 @@ Run:
 ```bash
 {{< highlight bash >}}
 
-sudo systemctl enable kube-apiserver kube-controller-manager kube-scheduler
-sudo systemctl start kube-apiserver kube-controller-manager kube-scheduler
+sudo systemctl enable kube-apiserver kube-controller-manager kube-scheduler kubernetes.target
+sudo systemctl start kube-apiserver kube-controller-manager kube-scheduler kubernetes.target
 
 {{< / highlight >}}
 ```
@@ -210,7 +210,7 @@ EOF
 Make an HTTP request to print the Kubernetes version:
 
 ```bash
-curl --cacert ca.crt https://${KUBERNETES_PUBLIC_IP}:6443/version
+curl -k --cacert ca.crt https://${KUBERNETES_PUBLIC_IP}:6443/version
 ```
 
 Output:

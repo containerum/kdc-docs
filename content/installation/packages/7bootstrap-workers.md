@@ -18,7 +18,7 @@ draft: false
 
 This section covers how to launch three worker nodes and install the following components: [runc](https://github.com/opencontainers/runc), [container networking plugins](https://github.com/containernetworking/cni), [containerd](https://github.com/containerd/containerd), [kubelet](https://kubernetes.io/docs/admin/kubelet), [kube-proxy](https://kubernetes.io/docs/concepts/cluster-administration/proxies).
 
-> **Don't forget to run all commands on all worker nodes.**
+> **Don't forget to run these commands on all worker nodes.**
 
 ## Provision a worker node
 
@@ -30,9 +30,11 @@ Install the OS dependencies:
 sudo yum update
 sudo yum -y install socat conntrack ipset
 
+swapoff -a
+
 {{< / highlight >}}
 ```
-
+> **Don't forget to turn off swap completely in /etc/fstab.**
 > `socat` enables support for `kubectl port-forward` command.
 
 ### Download and install the components binaries
@@ -45,21 +47,6 @@ sudo yum install kubernetes-node-meta
 {{< / highlight >}}
 ```
 
-Create installation directories:
-
-```bash
-{{< highlight bash >}}
-
-sudo mkdir -p \
-  /var/lib/kubelet \
-  /var/lib/kube-proxy \
-  /var/lib/kubernetes \
-  /var/run/kubernetes \
-  /etc/kubernetes/pki
-
-{{< / highlight >}}
-```
-
 ### Install docker
 
 Kubernetes supports various container runtimes. By default this installation uses docker. To install and configure alternative runtimes consult the [plugins](/plugins) section.
@@ -67,9 +54,7 @@ Kubernetes supports various container runtimes. By default this installation use
 ```bash
 {{< highlight bash >}}
 
-yum install docker
-sed -i 's/native.cgroupdriver=systemd/native.cgroupdriver=cgroupfs/' /usr/lib/systemd/system/docker.service
-systemctl daemon-reload
+yum install docker -y
 systemctl enable docker && systemctl start docker
 
 {{< / highlight >}}
@@ -93,7 +78,7 @@ sudo cp $HOSTNAME.kubeconfig /etc/kubernetes/kubelet.kubeconfig
 ```bash
 {{< highlight bash >}}
 
-sudo mv kube-proxy.kubeconfig /etc/kubernetes
+sudo cp kube-proxy.kubeconfig /etc/kubernetes
 
 {{< / highlight >}}
 ```
@@ -104,8 +89,8 @@ sudo mv kube-proxy.kubeconfig /etc/kubernetes
 {{< highlight bash >}}
 
 sudo systemctl daemon-reload
-sudo systemctl enable kubernetes.target
-sudo systemctl start kubernetes.target
+sudo systemctl enable kubernetes.target kubelet kube-proxy
+sudo systemctl start kubernetes.target kubelet kube-proxy
 
 {{< / highlight >}}
 ```
@@ -130,4 +115,4 @@ node-03   Ready     <none>    20s       v1.10.2
 
 Done!
 
-Now you can proceed to [configuring Flannel](/installation/packages/8flannel).
+Now you can proceed to [Calico set up](/installation/packages/8calico).

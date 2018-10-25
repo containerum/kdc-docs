@@ -1,5 +1,5 @@
 ---
-title: Kubernetes DNS Cluster Add-on
+title: Kubernetes CoreDNS Cluster Add-on
 linktitle: DNS Cluster
 description: Launching service discovery to applications running inside the Kubernetes cluster.
 
@@ -15,26 +15,26 @@ draft: false
 ---
 
 # Launch DNS Cluster Add-on
-Configure DNS Cluster to enable service discovery to applications running inside the Kubernetes cluster.
+Configure CoreDNS Cluster to enable service discovery for applications running in Kubernetes cluster.
 
 ## Deploy the kube-dns cluster add-on
 
 
-Launch `kube-dns`:
+Launch `core-dns`:
 
 ```bash
-kubectl create -f https://raw.githubusercontent.com/containerum/cdk-docs/master/content/files/kube-dns.yaml
+kubectl create -f https://raw.githubusercontent.com/containerum/cdk-docs/master/content/files/coredns.yaml
 ```  
 Output:
 
 ```
-service "kube-dns" created
-serviceaccount "kube-dns" created
-configmap "kube-dns" created
-deployment.extensions "kube-dns" created
+service "coredns" created
+serviceaccount "coredns" created
+configmap "coredns" created
+deployment.extensions "coredns" created
 ```
 
-List the pods of the `kube-dns` deployment:
+List the pods of the `coredns` deployment:
 
 ```bash
 kubectl get pods -l k8s-app=kube-dns -n kube-system
@@ -43,7 +43,7 @@ Output:
 
 ```
 NAME                        READY     STATUS    RESTARTS   AGE
-kube-dns-3097350089-gq015   3/3       Running   0          20s
+coredns-c68859c76-5pw2z     3/3       Running   0          20s
 ```
 
 ## Verification
