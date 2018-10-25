@@ -22,7 +22,7 @@ Calico is an overlay network for containers. Download the Calico networking mani
 curl -O https://raw.githubusercontent.com/containerum/kdc-docs/master/content/files/calico/calico.yaml
 ```
 
-Now it's time to configure calico!
+Now it's time to configure Calico!
 To run Calico it needs to be connected to etcd database. We will use same database as Kubernetes do.
 
 At first you need to set up etcd address in `calico.yaml`:
@@ -57,8 +57,7 @@ If you do not want to use pod-cidr=192.168.0.0/16 then update "CALICO_IPV4POOL_C
 
 If we have everything done right, we need to proceed with BGP configuration in Calico.
 
-First of all, we need to get calicoctl utility, to do this you can add pod for calicoctl:
-
+First of all, we need to get calicoctl utility, to do this you can add pod to run calicoctl commands:
 ```bash
 curl -O https://raw.githubusercontent.com/containerum/kdc-docs/master/content/files/calico/calicoctl.yaml
 ```
@@ -81,22 +80,22 @@ spec:
 EOF;
 ```
 
-For access to pods from master you should install bird on your master:
+To access pods from master you have to install [bird](https://bird.network.cz/) on your master:
 ```bash
 yum install -y bird
 ```
-Next configure bird like this:
+Bird config sample `/etc/bird.conf`:
 ```ini
 log syslog { trace, info, remote, warning, error, auth, fatal, bug };
 log stderr all;
 
 router id 172.16.0.1; # master internal ip
 
-# add all received routes to kernel routing table
+# push all incoming routes to kernel routing table
 protocol kernel {
-  persist; # save routes when bird goes down
+  persist;            # save routes on bird shutdown
   scan time 2;
-  export all; # export all incoming routes in to kernel
+  export all;         # export all incoming routes to kernel
   graceful restart;
 }
 
@@ -108,30 +107,32 @@ protocol device {
 
 protocol direct {
   debug { states };
-  interface "ib0"; # master internal ip
+  interface "ens160";  # master internal interface
+                       # should be the same as configured
+                       # for Calico communication
 }
 
-# apply all routes to pod subnet
+# apply incoming routes to pod subnet
 filter main_filter {
-      if net ~ 192.168.0.0/16 then accept; # here your PODs CIDR
+      if net ~ 192.168.0.0/16 then accept; # use your POD CIDR
       else reject;
 }
 
-# bgp rules template
+# BGP rule template
 template bgp bgp_template {
   debug { states };
   description "Connection to BGP peer";
-  local as 63400; # Same as calico hosts AS
-  multihop; # allow connect to neighbor though router
-  gateway recursive; # allow routes trough router
+  local as 63400;      # same as Calico host AS
+  multihop;            # allow connection to neighbor through router
+  gateway recursive;   # allow routes through router
   import filter main_filter; # apply filter
-  next hop self; # adtertise self ip as next hop
-  source address 172.16.0.1; # Master internal ip
-  add paths on; # allow multiple routes to same subnet
+  next hop self;       # advertise our ip as next hop
+  source address 172.16.0.1; # master internal ip
+  add paths on;        # allow multiple routes to same subnet
   graceful restart;
 }
 
-#Here list of BGP peers (kubernetes nodes)
+# list of BGP peers (kubernetes nodes)
 protocol bgp node-01 from bgp_template {
   neighbor 172.16.0.11 as 63400;
 }
@@ -141,17 +142,17 @@ protocol bgp node-02 from bgp_template {
 }
 ```
 
-Also you must add master nodes to bgp pers in calico:
+You have to add master node IP to bgp peers in Calico:
 ```bash
-cat << EOF | calicoctl create -f -
+cat << EOF | kubectl exec -ti -n kube-system calicoctl -- /calicoctl create -f -
 apiVersion: projectcalico.org/v3
 kind: BGPPeer
 metadata:
   name: bgppeer-m1
 spec:
-  peerIP: 172.16.0.21
+  peerIP: 172.16.0.1
   asNumber: 63400
-EOF
+EOF;
 ```
 
 Done!

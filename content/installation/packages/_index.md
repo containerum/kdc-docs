@@ -41,8 +41,8 @@ Kubectl is a CLI tool for Kubernetes.
 - Bootstrap workers  
 Launching worker nodes. You can launch as many workers as you need.
 
-- Install flannel  
-Flannel is a virtual network that attaches IP addresses to containers.
+- Install Calico
+Calico is a virtual network that attaches IP addresses to containers.
 
 - Configure DNS add-on  
 [DNS add-on](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/) is a DNS-based service discovery to applications running in the Kubernetes cluster.

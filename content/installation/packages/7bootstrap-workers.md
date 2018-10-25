@@ -18,7 +18,7 @@ draft: false
 
 This section covers how to launch three worker nodes and install the following components: [runc](https://github.com/opencontainers/runc), [container networking plugins](https://github.com/containernetworking/cni), [containerd](https://github.com/containerd/containerd), [kubelet](https://kubernetes.io/docs/admin/kubelet), [kube-proxy](https://kubernetes.io/docs/concepts/cluster-administration/proxies).
 
-> **Don't forget to run all commands on all worker nodes.**
+> **Don't forget to run these commands on all worker nodes.**
 
 ## Provision a worker node
 
@@ -34,7 +34,7 @@ swapoff -a
 
 {{< / highlight >}}
 ```
-
+> **Don't forget to turn off swap completely in /etc/fstab.**
 > `socat` enables support for `kubectl port-forward` command.
 
 ### Download and install the components binaries
@@ -115,4 +115,4 @@ node-03   Ready     <none>    20s       v1.10.2
 
 Done!
 
-Now you can proceed to [configuring Flannel](/installation/packages/8flannel).
+Now you can proceed to [Calico set up](/installation/packages/8calico).
