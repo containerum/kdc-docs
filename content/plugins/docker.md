@@ -27,22 +27,22 @@ Docker is a classic container runtime for Kubernetes. Runs out-of-the-box.
 
 **CentOS:**
 ```
-$ sudo yum install docker
-$ sudo sed -i 's/native.cgroupdriver=systemd/native.cgroupdriver=cgroupfs/' /usr/lib/systemd/system/docker.service
-$ sudo systemctl daemon-reload
-$ sudo systemctl start docker && sudo systemctl enable docker
+sudo yum install docker
+sudo sed -i 's/native.cgroupdriver=systemd/native.cgroupdriver=cgroupfs/' /usr/lib/systemd/system/docker.service
+sudo systemctl daemon-reload
+sudo systemctl start docker && sudo systemctl enable docker
 ```
 
 **Ubuntu:**  
 ```bash
-$ curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
-$ sudo add-apt-repository \
+curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
+sudo add-apt-repository \
        "deb https://apt.dockerproject.org/repo/ \
        ubuntu-$(lsb_release -cs) \
        main"
-$ sudo apt-get update
-$ sudo apt-get -y install docker-engine
-$ sudo sed -i 's/native.cgroupdriver=systemd/native.cgroupdriver=cgroupfs/' /usr/lib/systemd/system/docker.service
-$ sudo systemctl daemon-reload
-$ sudo systemctl start docker && sudo systemctl enable docker
+sudo apt-get update
+sudo apt-get -y install docker-engine
+sudo sed -i 's/native.cgroupdriver=systemd/native.cgroupdriver=cgroupfs/' /usr/lib/systemd/system/docker.service
+sudo systemctl daemon-reload
+sudo systemctl start docker && sudo systemctl enable docker
 ```
