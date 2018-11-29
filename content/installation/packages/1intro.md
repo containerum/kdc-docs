@@ -113,13 +113,13 @@ Add Containerum repository to yum. To put add our repository to yum run this com
 ```
 {{< highlight bash >}}
 cat <<EOF > /etc/yum.repos.d/exon.repo
-[exonlab-kubernetes1.11-testing]
+[exonlab-kubernetes1_11]
 name=Exon lab kubernetes repo for CentOS
-baseurl=http://repo.containerum.io/centos/7/kubernetes-1_11-pkg/x86_64/
+baseurl=https://s3-eu-west-1.amazonaws.com/packages.containerum/kubernetes_pkg/1.11/centos/$releasever/$basearch/
 skip_if_unavailable=False
 gpgcheck=1
 repo_gpgcheck=1
-gpgkey=https://repo.containerum.io/RPM-GPG-KEY-ExonLab
+gpgkey=https://s3-eu-west-1.amazonaws.com/packages.containerum/RPM-GPG-KEY-exonlab
 enabled=1
 enabled_metadata=1
 EOF
