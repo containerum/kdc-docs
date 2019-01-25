@@ -51,3 +51,10 @@ pygmentsStyle = "monokai"
   identifier = "packages"
   parent = "kube-installation"
   url = "/installation/packages/"
+
+[[menu.docs]]
+  name = "Install via Element"
+  weight = 8
+  identifier = "element"
+  parent = "kube-installation"
+  url = "/installation/element/"
