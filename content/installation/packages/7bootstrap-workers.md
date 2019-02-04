@@ -47,15 +47,30 @@ sudo yum install kubernetes-node-meta
 {{< / highlight >}}
 ```
 
-### Install docker
+### Install CRI-O
 
-Kubernetes supports various container runtimes. By default this installation uses docker. To install and configure alternative runtimes consult the [plugins](/plugins) section.
+Kubernetes supports various container runtimes. By default this installation uses CRI-O. To install and configure alternative runtimes consult the [plugins](/plugins) section.
 
 ```bash
 {{< highlight bash >}}
 
-yum install docker -y
-systemctl enable docker && systemctl start docker
+yum install cri-o cri-tools -y
+systemctl enable cri-o && systemctl start cri-o
+
+{{< / highlight >}}
+```
+
+To use CRI-O as kubernetes runtime chane kubelet parameters in ```/etc/sysconfig/kubelet```:
+
+```bash
+{{< highlight bash >}}
+
+cat /etc/sysconfig/kubelet
+# Container runtime to use. Possible values: docker, remote.
+KUBELET_RUNTIME=remote
+# The endpoint of remote runtime service.
+KUBELET_RUNTIME_ENDPOINT=unix:///var/run/crio/crio.sock
+
 
 {{< / highlight >}}
 ```
