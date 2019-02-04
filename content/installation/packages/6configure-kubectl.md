@@ -11,7 +11,7 @@ menu:
     parent: "packages"
     weight: 7
 
-draft: false
+draft: true
 ---
 
 # Configure kubectl for remote access

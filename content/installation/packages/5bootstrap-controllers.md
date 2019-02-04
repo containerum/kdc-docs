@@ -22,18 +22,6 @@ The following components should be installed on each master node: Kubernetes API
 
 > **Note**: In the case of launching on one host `PUBLIC_KUBERNETES_IP`  (IP address of kubernetes load balancer) can be replaced with `MASTER_IP`
 
-## Prepare Kubernetes Control Plane
-
-Create a directory for Kubernetes configuration files:
-
-```bash
-{{< highlight bash >}}
-
-sudo mkdir -p /etc/kubernetes/pki
-
-{{< / highlight >}}
-```
-
 ### Install Kubernetes master node meta-package
 
 Run:
@@ -46,17 +34,21 @@ sudo yum install kubernetes-master-meta
 {{< / highlight >}}
 ```
 
-### Configure the Kubernetes API Server
+### Copy certs and kubeconfigs to appropriate directories
 
 ```bash
 {{< highlight bash >}}
 
-sudo cp ca.crt ca.key kubernetes.crt kubernetes.key \
-  service-account.crt service-account.key \
-  /etc/kubernetes/pki/
+cd master
+sudo cp *.{crt,key,pub} /etc/kubernetes/pki/
+sudo cp *.kubeconfig /etc/kubernetes/
+chmod 600 /etc/kubernetes/pki/*.key
+chmod 600 /etc/kubernetes/*.kubeconfig
 
 {{< / highlight >}}
 ```
+
+### Configure the Kubernetes API Server
 
 Check the default kube-apiserver.service systemd unit with `systemctl cat kube-apiserver.service`.
 If you know the default flags don’t match your setup, copy the unit into `/etc/systemd/system/kube-apiserver.service` and make your changes there.
@@ -73,32 +65,10 @@ ETCD_SERVERS=https://${ETCD_NODE_1_IP}:2379,https://${ETCD_NODE_2_IP}:2379,https
 
 ### Configure Kubernetes Controller Manager
 
-Move `kube-controller-manager.kubeconfig`:
-
-```bash
-{{< highlight bash >}}
-
-sudo mv kube-controller-manager.kubeconfig /etc/kubernetes
-
-{{< / highlight >}}
-```
-
 Modify the default values in `/etc/sysconfig/kube-controller-manager`:  
 
 ```
 BIND_ADDRESS=0.0.0.0
-```
-
-### Configure Kubernetes Scheduler
-
-Move `kube-scheduler.kubeconfig`:
-
-```bash
-{{< highlight bash >}}
-
-sudo mv kube-scheduler.kubeconfig /etc/kubernetes
-
-{{< / highlight >}}
 ```
 
 ### Launch Controller Services
@@ -205,30 +175,34 @@ EOF
 {{< / highlight >}}
 ```
 
-## Verification
+## Configure kubectl
 
-Make an HTTP request to print the Kubernetes version:
+To configure kubectl just copy admin config to ~/.kube/config:
 
 ```bash
-curl -k --cacert ca.crt https://${KUBERNETES_PUBLIC_IP}:6443/version
+{{< highlight bash >}}
+
+cp users/admin.kubeconfig ~/.kube/config
+
+{{< / highlight >}}
+```
+### Verification
+Check the components status. Run:  
+```bash
+kubectl get componentstatuses
 ```
 
 Output:
 
-```json
-{
-  "kind": "Status",
-  "apiVersion": "v1",
-  "metadata": {
-
-  },
-  "status": "Failure",
-  "message": "Unauthorized",
-  "reason": "Unauthorized",
-  "code": 401
-}
+```
+NAME                 STATUS    MESSAGE             ERROR
+controller-manager   Healthy   ok
+scheduler            Healthy   ok
+etcd-1               Healthy   {"health":"true"}
+etcd-2               Healthy   {"health":"true"}
+etcd-0               Healthy   {"health":"true"}
 ```
 
 Done!
 
-Now you can proceed to [configuring kubectl](/installation/packages/6configure-kubectl).
+Now you can proceed to [bootstrapping worker nodes](/installation/packages/7bootstrap-workers).
