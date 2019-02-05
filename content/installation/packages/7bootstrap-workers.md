@@ -60,7 +60,7 @@ systemctl enable cri-o && systemctl start cri-o
 {{< / highlight >}}
 ```
 
-To use CRI-O as kubernetes runtime chane kubelet parameters in ```/etc/sysconfig/kubelet```:
+To use CRI-O as Kubernetes runtime change the Kubelet parameters in ```/etc/sysconfig/kubelet```:
 
 ```bash
 {{< highlight bash >}}
