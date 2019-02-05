@@ -60,7 +60,7 @@ systemctl enable cri-o && systemctl start cri-o
 {{< / highlight >}}
 ```
 
-To use CRI-O as kubernetes runtime chane kubelet parameters in ```/etc/sysconfig/kubelet```:
+To use CRI-O as Kubernetes runtime change the Kubelet parameters in ```/etc/sysconfig/kubelet```:
 
 ```bash
 {{< highlight bash >}}
@@ -80,20 +80,11 @@ KUBELET_RUNTIME_ENDPOINT=unix:///var/run/crio/crio.sock
 ```bash
 {{< highlight bash >}}
 
-sudo cp ca.crt /etc/kubernetes/pki/
-sudo cp $HOSTNAME.crt /etc/kubernetes/pki/node.crt
-sudo cp $HOSTNAME.key /etc/kubernetes/pki/node.key
-sudo cp $HOSTNAME.kubeconfig /etc/kubernetes/kubelet.kubeconfig
-
-{{< / highlight >}}
-```
-
-### Configure Kubernetes Proxy
-
-```bash
-{{< highlight bash >}}
-
-sudo cp kube-proxy.kubeconfig /etc/kubernetes
+cd $NODE_CERTS_DIR
+sudo cp *.{crt,key} /etc/kubernetes/pki/
+sudo cp *.kubeconfig /etc/kubernetes/
+chmod 600 /etc/kubernetes/pki/*.key
+chmod 600 /etc/kubernetes/*.kubeconfig
 
 {{< / highlight >}}
 ```
@@ -121,12 +112,12 @@ kubectl get nodes
 
 ```
 NAME       STATUS    ROLES     AGE       VERSION
-node-01   Ready     <none>    20s       v1.10.2
-node-02   Ready     <none>    20s       v1.10.2
-node-03   Ready     <none>    20s       v1.10.2
+node-01    NotReady     <none>    20s       v1.10.2
+node-02    NotReady     <none>    20s       v1.10.2
+node-03    NotReady     <none>    20s       v1.10.2
 ```
 
-**Note**: Some nodes may have a status different from `Ready`. It's normal if some nodes are restarting.
+**Note**: Nodes are not ready because network services are not configured.
 
 Done!
 

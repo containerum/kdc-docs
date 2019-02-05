@@ -43,8 +43,9 @@ Run:
 ```bash
 {{< highlight bash >}}
 
-sudo cp ca.crt etcd.crt etcd.key /etc/ssl/etcd/
-sudo chown etcd:etcd /etc/ssl/etcd/*.key /etc/ssl/etcd/*.crt
+cd $ETCD_CERTS_DIR
+sudo cp * /etc/ssl/etcd/
+sudo chown etcd:etcd /etc/ssl/etcd/*
 sudo chmod 640 /etc/ssl/etcd/*.key
 
 {{< / highlight >}}
@@ -57,7 +58,7 @@ In the case of etcd installation to master nodes `ETCD_NODE_1_IP` is equal to `M
 Each etcd node must have a unique name within the cluster. Set the etcd node name to match the current node host name.
 
 ```bash
-ETCD_NAME=$(hostname -s)
+ETCD_NAME=$(hostname)
 ```
 
 Edit the etcd config file in `/etc/etcd/etcd.conf`:
@@ -73,12 +74,12 @@ ETCD_INITIAL_CLUSTER_TOKEN="etcd-cluster-1"
 ETCD_INITIAL_CLUSTER_STATE="new"
 ETCD_CERT_FILE="/etc/ssl/etcd/etcd.crt"
 ETCD_KEY_FILE="/etc/ssl/etcd/etcd.key"
-ETCD_TRUSTED_CA_FILE="/etc/ssl/etcd/ca.crt"
+ETCD_TRUSTED_CA_FILE="/etc/ssl/etcd/etcd-ca.crt"
 ETCD_CLIENT_CERT_AUTH="true"
 ETCD_PEER_CERT_FILE="/etc/ssl/etcd/etcd.crt"
 ETCD_PEER_KEY_FILE="/etc/ssl/etcd/etcd.key"
 ETCD_PEER_CLIENT_CERT_AUTH="true"
-ETCD_PEER_TRUSTED_CA_FILE="/etc/ssl/etcd/ca.crt"
+ETCD_PEER_TRUSTED_CA_FILE="/etc/ssl/etcd/etcd-ca.crt"
 EOF
 ```
 
