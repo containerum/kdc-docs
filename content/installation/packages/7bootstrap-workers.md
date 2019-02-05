@@ -117,7 +117,7 @@ node-02    NotReady     <none>    20s       v1.10.2
 node-03    NotReady     <none>    20s       v1.10.2
 ```
 
-**Note**: Nodes are not ready because network services not configured.
+**Note**: Nodes are not ready because network services are not configured.
 
 Done!
 
