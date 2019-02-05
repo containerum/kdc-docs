@@ -21,7 +21,7 @@ Containerum documentation walks you through all aspects of Containerum installat
 
 **[About](/about)** contains Documentation overview.
 
-**[Installation](/installation/prerequirements)** contains describes how to bootstrap Kubernetes Distribution by Containerum (KDC) from binaries or using Containerum Element installer.  
+**[Installation](/installation/prerequirements)** describes how to bootstrap Kubernetes Distribution by Containerum (KDC) from binaries or using Containerum Element installer.  
 
 **[Plugins](/plugins/)** section describes how to install and configure plugins that work best with KDC.
 
