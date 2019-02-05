@@ -39,7 +39,7 @@ etcd_key: "/calico-secrets/etcd-key"
 ```
 To allow Calico connect to Kubernetes etcd you need add certificates to yaml Secrets section:
 
-You have to encode calico certificates from `etcd-users` directory in base64 removing newlines, you can use this command for ca, key and cert:
+You have to encode calico certificates from `etcd-users` directory in base64 removing newlines. You can use this command for ca, key and cert:
 ```bash
 cat etcd-users/etcd-ca.crt | base64 -w0
 ```
